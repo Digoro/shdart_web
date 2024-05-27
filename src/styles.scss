@@ -1,0 +1,646 @@
+
+
+// @import '../node_modules/swiper/swiper.scss';
+// @import '../node_modules/swiper/components/pagination/pagination.scss';
+// @import '../node_modules/swiper/components/navigation/navigation.scss';
+// @import "~@ng-select/ng-select/themes/material.theme.css";
+
+@import "/foundation.scss";
+
+// @font-face {
+//     font-family: 'Pretendard', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+//     src: url("/asests/fonts/Pretendard-Black.ttf") format('ttf');
+//     font-weight: 900;
+// }
+
+// @font-face {
+//     font-family: 'Pretendard', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+//     src: url("/asests/fonts/Pretendard-ExtraBold.ttf") format('ttf');
+//     font-weight: 800;
+// }
+
+// @font-face {
+//     font-family: 'Pretendard', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+//     src: url("/asests/fonts/Pretendard-Bold.ttf") format('ttf');
+//     font-weight: 700;
+// }
+
+// @font-face {
+//     font-family: 'Pretendard', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+//     src:  url("/asests/fonts/Pretendard-SemiBold.ttf") format('ttf');
+//     font-weight: 600;
+// }
+
+// @font-face {
+//     font-family: 'Pretendard', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+//     src: url("/asests/fonts/Pretendard-Medium.ttf") format('ttf');
+//     font-weight: 500;
+// }
+
+// @font-face {
+//     font-family: 'Pretendard', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+//     src: url("/asests/fonts/Pretendard-Regular.ttf") format('ttf');
+//     font-weight: 400;
+// }
+
+// @font-face {
+//     font-family: 'Pretendard', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+//     src: url("/asests/fonts/Pretendard-Light.ttf") format('ttf');
+//     font-weight: 300;
+// }
+
+// @font-face {
+//     font-family: 'Pretendard', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+//     src: url("/asests/fonts/Pretendard-ExtraLight.ttf") format('ttf');
+//     font-weight: 200;
+// }
+
+// @font-face {
+//     font-family: 'Pretendard', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+//     src: url("/asests/fonts/Pretendard-Thin.ttf") format('ttf');
+//     font-weight: 100;
+// }
+
+@font-face {
+    font-family: 'Pretendard', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+    src: url("https://nonunbub.s3.ap-northeast-2.amazonaws.com/fonts/Pretendard-Black.woff") format('woff');
+    font-weight: 900;
+}
+
+@font-face {
+    font-family: 'Pretendard', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+    src: url("https://nonunbub.s3.ap-northeast-2.amazonaws.com/fonts/Pretendard-ExtraBold.woff") format('woff');
+    font-weight: 800;
+}
+
+@font-face {
+    font-family: 'Pretendard', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+    src: url("https://nonunbub.s3.ap-northeast-2.amazonaws.com/fonts/Pretendard-Bold.woff") format('woff');
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'Pretendard', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+    src:  url("https://nonunbub.s3.ap-northeast-2.amazonaws.com/fonts/Pretendard-SemiBold.woff") format('woff');
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: 'Pretendard', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+    src: url("https://nonunbub.s3.ap-northeast-2.amazonaws.com/fonts/Pretendard-Medium.woff") format('woff');
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'Pretendard', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+    src: url("https://nonunbub.s3.ap-northeast-2.amazonaws.com/fonts/Pretendard-Regular.woff") format('woff');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Pretendard', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+    src: url("https://nonunbub.s3.ap-northeast-2.amazonaws.com/fonts/Pretendard-Light.woff") format('woff');
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: 'Pretendard', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+    src: url("https://nonunbub.s3.ap-northeast-2.amazonaws.com/fonts/Pretendard-ExtraLight.woff") format('woff');
+    font-weight: 200;
+}
+
+@font-face {
+    font-family: 'Pretendard', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+    src: url("https://nonunbub.s3.ap-northeast-2.amazonaws.com/fonts/Pretendard-Thin.woff") format('woff');
+    font-weight: 100;
+}
+
+* {
+    font-family: 'Pretendard', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+}
+
+.container {
+    padding: 0px !important;
+}
+
+@media (min-width: 768px) {
+    .container{
+        max-width: 480px !important;
+    }
+}
+
+.header {
+    position: sticky;
+    background: #fff;
+    top: 0px;
+    padding: 8px 14px 8px 16px;
+    z-index: 900;
+    height: 64px;
+    display: flex;
+    align-items: center;
+}
+
+.footer {
+    position: sticky;
+    background: #fff;
+    bottom: 65px;
+    padding: 8px;
+    z-index: 900;    
+}
+
+swiper > img {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 100%;
+}
+
+body {
+    color: $gray-900;
+    font-weight: $regular;
+    line-height: 120%;
+    -webkit-user-select: text !important;
+    -moz-user-select: text !important;
+    -ms-user-select: text !important;
+    user-select: text !important;
+}
+
+.invalid-input {
+    font-size: 13px;
+    color: red;
+}
+
+.desc {
+    font-size: 14px;
+    font-weight: 500;
+    color: $gray-800;
+}
+
+.avatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pre-wrap {
+    white-space: pre-wrap;
+}
+
+.input-label {
+    font-size: 16px;
+    font-weight: 500;
+    transition: font-size .1s ease-in-out;
+}
+
+input[type='radio']:after {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    content: "";
+    display: inline-block;
+    visibility: visible;
+    background-color: #fff;
+    border: 7px solid rgb(208, 208, 208);
+}
+
+input[type='radio']:checked:after {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    background-color: #fff;
+    content: "";
+    display: inline-block;
+    visibility: visible;
+    border: 7px solid #8E46EC;
+}
+
+.modal-xlg {
+    max-width: 65% !important;
+
+    .modal-body {
+        max-height: calc(100vh - 200px);
+        overflow-y: auto;
+    }
+}
+
+.modal-max {
+    max-width: 100% !important;
+
+    .modal-body {
+        max-height: calc(100vh - 200px);
+        overflow-y: auto;
+    }
+}
+
+.modal-popup {
+    z-index: 500;
+    margin-top: 20vh !important;
+
+    .modal-content {
+        background: none !important;
+        border: none !important;
+        display: flex !important;
+        align-items: center !important;    
+    }
+}
+
+.link {
+    color: #2196f3;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.ngx-pagination .current {
+    background: #8e46ec !important;
+}
+
+.nnb-toast {
+    transform: translateY(-70px);
+}
+
+button {
+    border: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+.row {
+    margin: 0px !important;
+}
+
+// angular-datetime-picker
+owl-date-time-inline  {
+    .owl-dt-container-info{
+        display: none !important;
+    }
+
+    .owl-dt-calendar {
+        display: inline !important;
+    }
+    width: 100% !important;
+    max-width: 400px !important;
+
+    owl-date-time-container {
+        box-shadow: none !important;
+        border: none !important;
+        width: 100% !important;
+    }
+
+    .owl-dt-control-period-button {
+        pointer-events: none !important;
+    }
+
+    .owl-dt-control-content {
+        font-size: 24px !important;
+        font-weight: 700 !important;
+    }
+    
+    .owl-dt-calendar-control-content{
+        .owl-dt-control-period-button {
+            .owl-dt-control-button-content {
+                height: 100% !important;
+                width: 100% !important;
+                .owl-dt-control-button-arrow {
+                   display: none !important;
+                }
+            }
+        }
+    }
+
+    .owl-dt-control-content.owl-dt-control-button-content {
+        height: 32px !important;
+        width: 32px !important;
+    }
+
+    .owl-dt-control-button {
+        border-radius: 50% !important;
+    }
+
+    .owl-dt-control-arrow-button {
+        background: rgba(43, 43, 43, 0.05) !important;
+        height: 32px !important;
+        width: 32px !important;
+    }
+
+    .owl-dt-calendar-main {
+        owl-date-time-month-view {
+            .owl-dt-weekday {
+                font-size: 14px !important;
+                font-weight: 500 !important;
+                color: $gray-900 !important;
+            }
+
+            .owl-dt-calendar-table-divider {
+                display: none !important;
+            }
+
+            .owl-dt-calendar-cell-content {
+                color: $gray-900 !important;
+                font-size: 18px !important;
+                font-weight: 500 !important;
+            }
+
+            .owl-dt-calendar-cell-disabled > .owl-dt-calendar-cell-content {
+                color: $gray-400 !important;
+            }
+
+            .owl-dt-calendar-cell-out {
+                color: $gray-400 !important;
+                font-size: 18px !important;
+                font-weight: 500 !important;
+            }
+
+            .owl-dt-calendar-cell-today {
+                border: none !important;
+                font-weight: 800 !important;
+            }
+
+            .owl-dt-calendar-cell-selected {
+                background: $brand-500 !important;
+                color: $gray-000 !important;
+                // width: 40px !important;
+                // height: 40px !important;
+            }
+        }
+    }
+}
+
+.nnb-bottom-sheet {
+    padding: 24px !important;
+    border-radius: 24px 24px 0px 0px !important;
+    font-size: 16px !important;
+    line-height: 24px !important;
+}
+
+.nnb-bottom-sheet-8-padding {
+    padding: 8px !important;
+    border-radius: 24px 24px 0px 0px !important;
+    font-size: 16px !important;
+    line-height: 24px !important;
+}
+
+.nnb-bottom-sheet-no-padding {
+    padding: 0px !important;
+    border-radius: 24px 24px 0px 0px !important;
+    font-size: 16px !important;
+    line-height: 24px !important;
+}
+
+.nnb-bottom-sheet-fullscreen {
+    padding: 0px !important;
+    min-height: 100vh !important;
+    max-height: 100vh !important;
+}
+
+.nnb-bottom-sheet-payment {
+    padding: 0px !important;
+    font-size: 16px !important;
+    line-height: 24px !important;
+}
+
+.nnb-bottom-sheet-opacity-0 {
+    background: rgba(0, 0, 255, 0);
+    box-shadow: none;
+    padding: 0px !important;
+}
+
+.nnb-bottom-sheet-bullet {
+    .swiper-pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .swiper-pagination-bullet {
+        opacity: 0.6 !important;
+        width: 6px !important;
+        height: 6px !important;
+    }
+    
+    .swiper-pagination-bullet-active {
+        opacity: 1 !important;
+        background: black !important;
+        width: 8px !important;
+        height: 8px !important;
+    }
+}
+
+.nnb-snack-bar {
+    background: $gray-000;
+    color: $gray-900;
+    font-weight: 500;
+    font-size: 18px;
+    border-radius: 12px !important;
+    margin: 0px 24px 150px 24px !important;
+    
+    .mat-button-wrapper {
+        color: $gray-900 !important;
+        margin-top: 16px !important;
+    }
+}
+
+// TODO: 결제하기 바텀시트에서 티켓선택안하고 넘어갈때 모달 뜨는데 뒤에 뜸
+.cdk-overlay-container {
+    // z-index: 1100 !important;
+}
+
+mat-sidenav-content {
+    background: $gray-000;
+}
+
+.count-minus-input {
+    background: #f2f3f8;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 35px;
+    font-size: 37px;
+    font-weight: 300;
+    color: #2B2B2B;
+}
+
+.count-minus-input {
+    background: #f2f3f8;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 35px;
+    font-size: 52px;
+    font-weight: 100;
+    color: $gray-900;
+    cursor: pointer;
+}
+
+.count-plus-input {
+    background: #f2f3f8;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 35px;
+    font-size: 37px;
+    font-weight: 300;
+    color: $gray-900;
+    cursor: pointer;
+}
+
+.count-input-disabled {
+    color: $gray-600;
+}
+
+// angular material slide-toggle
+.mat-slide-toggle .mat-slide-toggle-bar {
+    height: 30px;
+    width: 44px;
+    background: $gray-400;
+    border-radius: 16px;
+}
+
+.mat-slide-toggle .mat-slide-toggle-thumb {
+    background: $gray-000 !important;
+    width: 22px;
+    height: 22px;
+    margin-top: 7px;
+    margin-left: 3px;
+}
+
+.mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+    height: 30px;
+    width: 44px;
+    background: $brand-500;
+    border-radius: 16px;
+}
+
+.mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+    background: $gray-000 !important;
+    width: 22px;
+    height: 22px;
+    margin-top: 7px;
+    margin-left: 3px;
+}
+
+.mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+    background: $brand-300;
+}
+
+.mat-ripple-element {
+    display: none;
+}
+
+mat-calendar {
+    width: 100%;
+
+    .mat-calendar-abbr {
+        font-weight: 500;
+        color: black;
+        font-size: 16px;
+        text-decoration: none !important;
+        padding: 10px 0px;
+    }
+
+    .mat-calendar-table-header-divider {
+        visibility: hidden;
+    }
+
+    .mat-calendar-body-label[colspan="7"] {
+        display: none;
+    }
+
+    .mat-calendar-body-label {
+        visibility: hidden;
+    }
+
+    .mat-calendar-body-cell-content {
+       color: $gray-900;
+       font-size: 18px;
+       font-weight: 500;
+    }
+
+    .mat-calendar-body-cell:not(.mat-calendar-body-disabled):hover > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical) {
+        background: none !important;
+    }
+
+    .mat-calendar-body-selected {
+        background: $brand-500 !important;
+        color: $gray-000 !important;
+    }
+
+    .mat-calendar-body-disabled > div {
+        color: $gray-600 !important;
+        font-size: 18px !important;
+        font-weight: 500 ;
+    }
+
+    .closed-date > div{
+        color: $gray-600;
+        font-size: 18px;
+        font-weight: 500;
+    }
+
+    .mat-calendar-body-today {
+        border: none;
+        font-weight: 800 !important;
+    }
+
+    .closed-date > .mat-calendar-body-cell-content {
+        flex-direction: column;
+        justify-content: center;
+        display: flex;
+        margin-top: 4px;
+    }
+
+    .closed-date > .mat-calendar-body-cell-content::after {
+        content: '휴무';
+        font-size: 10px;
+        font-weight: 600;
+    }
+
+    .closed-date > div{
+        background: #fff !important;
+    }
+
+    .reservation-end-date > div {
+        color: $gray-900;
+        font-size: 18px;
+        font-weight: 500;
+        text-decoration: line-through;
+    }
+}
+
+img {
+    animation: 0.4s ease 0s 1 normal none running fadeIn;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+// progress
+progressbar {
+    height: 20px !important;
+}
+
+progressbar > bar {
+    background: #DD2E81 !important;
+    border-radius: 100px !important;
+    height: 20px !important;
+}

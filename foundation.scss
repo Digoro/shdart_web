@@ -1,0 +1,641 @@
+// font
+$regular: 400;
+$medium: 500;
+$semi-bold: 600;
+$bold: 700;
+
+.display-large-regular {
+    font-size: 24px;
+    line-height: 150%;
+    letter-spacing: 0;
+    font-weight: $regular;
+}
+
+.display-large-bold {
+    font-size: 24px;
+    line-height: 150%;
+    letter-spacing: 0;
+    font-weight: $bold;
+}
+
+.header1-bold {
+    font-size: 22px;
+    line-height: 150%;
+    letter-spacing: 0;
+    font-weight: $bold;
+}
+
+.header2-bold {
+    font-size: 20px;
+    line-height: 150%;
+    letter-spacing: 0;
+    font-weight: $bold;
+}
+
+.header3-medium {
+    font-size: 18px;
+    line-height: 150%;
+    letter-spacing: 0;
+    font-weight: $medium;
+}
+
+.header3-bold {
+    font-size: 18px;
+    line-height: 150%;
+    letter-spacing: 0;
+    font-weight: $bold;
+}
+
+.body1-regular {
+    font-size: 16px;
+    line-height: 130%;
+    letter-spacing: 0;
+    font-weight: $regular;
+}
+
+.body1-medium {
+    font-size: 16px;
+    line-height: 130%;
+    letter-spacing: 0;
+    font-weight: $medium;
+}
+
+.body1-semi-bold {
+    font-size: 16px;
+    line-height: 130%;
+    letter-spacing: 0;
+    font-weight: $semi-bold;
+}
+
+.body1-bold {
+    font-size: 16px;
+    line-height: 130%;
+    letter-spacing: 0;
+    font-weight: $bold;
+}
+
+.body2-medium {
+    font-size: 15px;
+    line-height: 130%;
+    letter-spacing: 0;
+    font-weight: $medium;
+}
+
+.body2-bold {
+    font-size: 15px;
+    line-height: 130%;
+    letter-spacing: 0;
+    font-weight: $bold;
+}
+
+.body3-regular {
+    font-size: 14px;
+    line-height: 130%;
+    letter-spacing: 0;
+    font-weight: $regular;
+}
+
+.body3-medium {
+    font-size: 14px;
+    line-height: 130%;
+    letter-spacing: 0;
+    font-weight: $medium;
+}
+
+.body3-bold {
+    font-size: 14px;
+    line-height: 130%;
+    letter-spacing: 0;
+    font-weight: $bold;
+}
+
+.button1-medium {
+    font-size: 18px;
+    letter-spacing: 0;
+    font-weight: $medium;
+}
+
+.button1-semi-bold {
+    font-size: 18px;
+    letter-spacing: 0;
+    font-weight: $semi-bold;
+}
+
+.button2-medium {
+    font-size: 16px;
+    letter-spacing: 0;
+    font-weight: $medium;
+}
+
+.button2-semi-bold {
+    font-size: 16px;
+    letter-spacing: 0;
+    font-weight: $semi-bold;
+}
+
+.button3-semi-bold {
+    font-size: 15px;
+    letter-spacing: 0;
+    font-weight: $semi-bold;
+}
+
+.button4-semi-bold {
+    font-size: 14px;
+    letter-spacing: 0;
+    font-weight: $semi-bold;
+}
+
+.caption-regular {
+    font-size: 12px;
+    letter-spacing: 0;
+    font-weight: $regular;
+}
+
+.caption-semi-bold {
+    font-size: 12px;
+    letter-spacing: 0;
+    font-weight: $semi-bold;
+}
+
+.caption-bold {
+    font-size: 12px;
+    letter-spacing: 0;
+    font-weight: $bold;
+}
+
+// color-styles
+$brand-600: #330979;
+$brand-500: #570CCA;
+$brand-400: #9659F4;
+$brand-300: #B990F7;
+$brand-200: #D7D1FE;
+$brand-100: #EDEBFE;
+
+$gray-900: #2B2B2B;
+$gray-800: #5B6371;
+$gray-700: #757587;
+$gray-600: #A6A8B8;
+$gray-400: #D2D2DE;
+$gray-200: #E8E8EF;
+$gray-100: #F2F3F8;
+$gray-050: #F7F7F8;
+$gray-000: #FFFFFF;
+
+$blue:#3B82F6;
+$blue-dark:#1B5AC2;
+$red:#ED6663;
+$red-dark:#D45653;
+$orange:#F2994A;
+$orange-dark:#EE7C12;
+$green:#22AD3A;
+$green-dark:#0A8720;
+
+$red-sub-dark:#BB0E3F;
+$red-sub:#DF5A80;
+$red-sub-light:#FDE2EA;
+$orange-sub-dark:#ED5716;
+$orange-sub:#F46D36;
+$orange-sub-light:#FFE9D9;
+$green-sub-dark:#15764D;
+$green-sub:#1F8B5A;
+$green-sub-light:#E7F6EFda;
+$blue-sub-dark:#143DCE;
+$blue-sub:#4971FF;
+$blue-sub-light:#E7EEFE;
+$purple-sub-dark:#340979;
+$purple-sub:#570CCA;
+$purple-sub-light:#EEEBFF;
+
+$red-050: #FEF2F2;
+$red-100: #FEE2E2;
+$red-200: #FECACA;
+$red-800: #991B1B;
+
+$orange-050: #FFF7ED;
+$orange-100: #FFEDD5;
+$orange-200: #FED7AA;
+$orange-800: #9A3412;
+
+$amber-050: #FFFBEB;
+$amber-100: #FEF3C7;
+$amber-200: #FDE68A;
+$amber-600: #D97706;
+$amber-800: #92400E;
+
+$yellow-050: #FEFCE8;
+$yellow-100: #FEF9C3;
+$yellow-200: #FEF08A;
+$yellow-800: #854D0E;
+
+$lime-050: #F7FEE7;
+$lime-100: #ECFCCB;
+$lime-200: #D9F99D;
+$lime-800: #3F6212;
+
+$emerald-050: #DBF2E7;
+$emerald-100: #BDE4D0;
+$emerald-200: #A7F3D0;
+$emerald-800: #065F46;
+
+$sky-050: #F0F9FF;
+$sky-100: #E0F2FE;
+$sky-200: #BAE6FD;
+$sky-800: #075985;
+
+$blue-050: #EFF6FF;
+$blue-100: #DBEAFE;
+$blue-200: #BFDBFE;
+$blue-800: #1E40AF;
+
+$pink-050: #FDF2F8;
+$pink-100: #FCE7F3;
+$pink-200: #FBCFE8;
+$pink-800: #9D174D;
+
+$rose-050: #FFF1F2;
+$rose-100: #FFE4E6;
+$rose-200: #FECDD3;
+$rose-800: #9F1239;
+
+// effect-styles
+$section-shadow: 0px 4px 5px rgba(0, 0, 0, 0.03);
+$md-shadow: 0px 2px 6px rgba(0, 0, 0, 0.08);
+$bottom-bar-shadow: 0px -6px 13px rgba(0, 0, 0, 0.02);
+$avatar-shadow: 1px 5px 6px rgba(0, 0, 0, 0.04);
+
+// object-styles
+$radius-xs:8px;
+$radius-sm:12px;
+$radius-md:24px;
+$radius-lg:32px;
+
+$border:1px;
+$border-lg:2px;
+
+// layout-rule
+.frame {
+    background-color: $gray-100;
+    // overflow: auto;
+    display: block;
+    // height: 100%;
+}
+
+.section {
+    background-color: $gray-000;
+    padding: 32px 16px;
+    margin-bottom: 16px;
+    box-shadow: $section-shadow;
+}
+
+.section-md {
+    background-color: $gray-000;
+    padding: 24px 16px;
+    margin-bottom: 16px;
+    box-shadow: $section-shadow;
+}
+
+.section-0 {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+// badge
+.nnb-badge {
+    padding: 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap;
+    line-height: 100%;
+}
+
+.nnb-badge-lg {
+    height: 28px;
+    font-size: 15px;
+}
+
+.nnb-badge-md {
+    height: 26px;
+    font-size: 14px;
+}
+
+.nnb-badge-sm {
+    height: 24px;
+    font-size: 12px;
+}
+
+.nnb-badge-purple {
+    background-color: $brand-100;
+    color: $brand-500;
+}
+
+.nnb-badge-purple-bg {
+    background-color: $brand-500;
+    color: $brand-100;
+}
+
+.nnb-badge-light-purple {
+    background-color: #fff;
+    color: #570DCA;
+    border: 1px solid #570DCA;
+}
+
+.nnb-badge-outline {
+    background-color: $gray-000;
+    border: 1px solid $gray-200;
+    color: $gray-800;
+}
+
+.nnb-badge-dark-grey {
+    background-color: $gray-700;
+    color: $gray-000;
+}
+
+.nnb-badge-black {
+    background-color: $gray-000;
+    border: 1px solid $gray-200;
+    color: $gray-900;
+}
+
+.nnb-badge-black-bg {
+    background-color: $gray-900;
+    color: $gray-000;
+}
+
+.nnb-badge-red {
+    background-color: $red-sub-light;
+    color: $red-sub;
+}
+
+.nnb-badge-orange {
+    background-color: $orange-sub-light;
+    color: $orange-sub;
+}
+
+.nnb-badge-green {
+    background-color: $green-sub-light;
+    color: $green-sub;
+}
+
+.nnb-badge-light-green {
+    background-color: $gray-000;
+    color: $green-sub;
+    border: 1px solid $gray-200;
+}
+
+.nnb-badge-blue {
+    background-color: $blue-sub-light;
+    color: $blue-sub;
+}
+
+.nnb-badge-light-blue {
+    background-color: #fff;
+    color: #1D4ED8;
+    border: 1px solid #2563EB;
+}
+
+.nnb-badge-light-grey {
+    background-color: $gray-100;
+    color: $gray-800;
+}
+
+// tag
+.hashtag {
+    padding: 12px 8px;
+    font-size:16px;
+    font-weight: 400;
+    background: #F7F7F8;
+    border-radius: 6px;
+    color: $gray-900;
+    line-height: 100%;
+}
+
+// button
+.nnb-btn-block {
+    width: 100%;
+}
+
+.nnb-btn-lg {
+    font-weight: 500;
+    padding: 19px 16px;
+    min-height: 56px;
+    font-size: 18px;
+    border-radius: 12px;
+    line-height: 100%;
+}
+
+.nnb-btn-md {
+    font-weight: 500;
+    padding: 16px 14px;
+    height: 48px;
+    font-size: 16px;
+    border-radius: 12px;
+    line-height: 16px;
+}
+
+.nnb-btn-sm {
+    font-weight: 500;
+    padding: 9px 8px;
+    height: 32px;
+    font-size: 14px;
+    border-radius: 8px;
+    line-height: 100%; 
+}
+
+.nnb-btn-primary {
+    background-color: $brand-500;
+    color:$gray-000;
+ }
+
+.nnb-btn-primary:hover {
+    background-color: $brand-600;
+}
+
+.nnb-btn-primary:disabled {
+    background-color: $gray-100;
+    color: $gray-600;
+}
+
+.nnb-btn-secondary {
+    background-color: $gray-100;
+    color: $gray-900;
+ }
+
+.nnb-btn-secondary:hover {
+    background-color: $gray-200;
+}
+
+.nnb-btn-secondary:disabled {
+    background-color: $gray-100;
+    color: $gray-600;
+}
+
+.nnb-btn-light-purple {
+    background-color: $brand-100;
+    color: $brand-500;
+    border-radius: 12px;
+}
+
+.nnb-btn-light-purple:disabled {
+    background-color: $gray-100;
+    color: $gray-600;
+}
+
+.nnb-btn-red {
+    background-color: $red;
+    color: $gray-000;
+}
+
+.nnb-btn-red:hover {
+    background-color: $red-dark;
+}
+
+.nnb-btn-red:disabled {
+    background-color: $gray-100;
+    color: $gray-600;
+}
+
+.nnb-btn-outline {
+    background-color: $gray-000;
+    color: $gray-900;
+    border: 1px solid $gray-200;
+ }
+
+.nnb-btn-outline:hover {
+    background-color: $gray-100;
+}
+
+.nnb-btn-outline:disabled {
+    color: $gray-200;
+}
+
+.nnb-btn-outline-primary {
+    background-color: $gray-000;
+    color: $brand-500;
+    border: 1px solid $gray-200;
+ }
+
+.nnb-btn-outline-primary:hover {
+    background-color: $purple-sub-light;
+}
+
+.nnb-btn-outline-primary:disabled {
+    color: $gray-600;
+}
+
+.nnb-btn-outline-red {
+    background-color: $gray-000;
+    color: $red;
+    border: 1px solid $red;
+ }
+
+.nnb-btn-outline-red:hover {
+    background-color: $red-sub-light;
+}
+
+.nnb-btn-outline-red:disabled {
+    color: $gray-600;
+}
+
+.nnb-btn-outline-light-purple {
+    background-color: $gray-000;
+    color: $brand-600;
+    border: 1px solid $brand-600;
+ }
+
+.nnb-btn-outline-light-purple:hover {
+    background-color: $gray-100;
+}
+
+.nnb-btn-outline-light-purple:disabled {
+    background-color: $gray-100;
+    color: $gray-600;
+    border: 1px solid $gray-200;
+}
+
+.nnb-btn-outline-light-grey {
+    background-color: $gray-000;
+    color: $gray-900;
+    border: 1px solid $gray-200;
+ }
+
+.nnb-btn-outline-light-grey:hover {
+    background-color: $gray-100;
+}
+
+.nnb-btn-outline-light-grey:disabled {
+    background-color: $gray-100;
+    color: $gray-600;
+    border: 1px solid $gray-200;
+}
+
+// stepper
+.nnb-stepper {
+    background: $gray-200;
+    padding: 8px;
+    border-radius: 50%;
+}
+
+// header
+.header-title-md {
+    font-size: 18px;
+    font-weight: 500;
+    color: $gray-900;
+}
+
+.header-title{
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 22px;
+    color: $gray-900;
+}
+
+// icon
+.nnb-icon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+// text-overflow
+.text-overflow {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+// a tag
+a {
+    text-decoration: none;
+    color: $gray-900;
+}
+
+// chips
+.chips {
+    background: $gray-100;
+    padding: 12px;
+    border-radius: 12px;
+    color: $gray-900;
+    font-weight: 600;
+    line-height: 16px;
+    font-size: 16px;
+}
+
+.chips:hover {
+    background: $gray-200;
+}
+
+.chip-activate {
+    color: $brand-500;
+    border: 1px solid $brand-500;
+}
+
+.chip-disable {
+    background: $gray-100;
+    color: $gray-600;   
+}
+
+.chip-round {
+    border-radius: 300px;
+}
