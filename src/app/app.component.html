@@ -317,27 +317,23 @@
 <ngx-table [id]="'corp-table'" [configuration]="config" [data]="corps" [columns]="columns" [pagination]="pagination"
   (event)="onTableEvent($event)">
   <ng-template let-row let-index="index">
-    <td>
-      <div>{{ (pagination.offset-1) * pagination.limit + (index+1)}}</div>
-    </td>
-    <td>
-      <div>{{row.corp_code}}</div>
-    </td>
-    <td>
-      <div>{{row.corp_name}}</div>
-    </td>
-    <td>
-      <div>{{row.stock_code}}</div>
-    </td>
-    <td>
-      <div>{{row.modify_date}}</div>
-    </td>
-    <td>
-      <div>{{row.createdAt}}</div>
-    </td>
-    <td>
-      <div>{{row.updatedAt}}</div>
-    </td>
+    <td>{{ (pagination.offset-1) * pagination.limit + (index+1)}}</td>
+    <td>{{row.corp.code}}</td>
+    <td>{{row.corp.name}}</td>
+    <td>{{row.corp.market}}</td>
+    <td>{{row.corp.industry}}</td>
+    <td>{{row.year}}</td>
+    <td>{{row.fullRevenue}}</td>
+    <td>{{row.operatingProfit}}</td>
+    <td>{{row.netIncome}}</td>
+    <td>{{row.operatingProfitMargin}}</td>
+    <td>{{row.netProfitMargin}}</td>
+    <td>{{row.roe}}</td>
+    <td>{{row.eps}}</td>
+    <td>{{row.per}}</td>
+    <td>{{row.bps}}</td>
+    <td>{{row.pbr}}</td>
+    <td>{{row.dividendPerShare}}</td>
   </ng-template>
 </ngx-table>
 

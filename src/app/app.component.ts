@@ -13,12 +13,12 @@ export class AppComponent implements OnInit {
   config: Config;
   pagination = {
     offset: 1,
-    limit: 10,
+    limit: 30,
     count: -1
   };
   corps: Corp[];
   currentPage = 1;
-  currentLimit = 10;
+  currentLimit = 30;
 
   constructor(
     private corpService: CorpService
@@ -27,18 +27,29 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.columns = [
       { key: 'index', title: '번호', width: '1%' },
-      { key: 'code', title: '기업코드', width: '1%' },
+      { key: 'code', title: '상장코드', width: '1%' },
       { key: 'name', title: '기업', width: '1%' },
-      { key: 'stock_code', title: '상장코드', width: '1%' },
-      { key: 'modify_date', title: '수정일', width: '1%' },
-      { key: 'created_date', title: '생성일', width: '1%' },
-      { key: 'update_date', title: '수정일', width: '1%' },
+      { key: 'market', title: '시장', width: '1%' },
+      { key: 'industry', title: '산업', width: '1%' },
+      { key: 'year', title: '연도', width: '1%' },
+      { key: 'fullRevenue', title: '매출액', width: '1%' },
+      { key: 'operatingProfit', title: '영업이익', width: '1%' },
+      { key: 'netIncome', title: '당기순이익', width: '1%' },
+      { key: 'operatingProfitMargin', title: '영업이익률', width: '1%' },
+      { key: 'netProfitMargin', title: '순이익률', width: '1%' },
+      { key: 'roe', title: 'ROE', width: '1%' },
+      { key: 'eps', title: 'EPS', width: '1%' },
+      { key: 'per', title: 'PER', width: '1%' },
+      { key: 'bps', title: 'BPS', width: '1%' },
+      { key: 'pbr', title: 'PBR', width: '1%' },
+      { key: 'dividendPerShare', title: '주당배당금', width: '1%' },
     ];
     this.config = { ...DefaultConfig };
+    this.config.rows = 30;
     this.config.horizontalScroll = true;
     this.config.orderEnabled = false;
 
-    this.setCorps(1, 10);
+    this.setCorps(1, 30);
   }
 
   setCorps(page: number, limit: number) {
