@@ -1,10 +1,50 @@
-.table {
-    // color: white;
+table {
     font-size: 18px;
+    border-collapse: separate;
+	border-spacing: 0;
 
-    tr {
-        white-space: nowrap;
-        width: 1%;
+    thead {
+        tr {
+            position: sticky;
+            top: 0;
+            z-index: 1;
+            background: white;
+            height: 70px;
+        }
+    }
+    
+    th {
+        padding: 8px 24px;
+        font-size: 15px;
+        color: #6A7684;
+        font-weight: 400;
         text-align: right;
-     }
+        white-space: nowrap;
+        border-bottom: 1px solid #d8dbdd;
+    }
+
+    td { 
+        padding: 0px;
+        text-align: right;
+        border-bottom: 1px solid #EAECEE;
+        height: 74px;
+    }
+
+    .otherTd { 
+        white-space: nowrap;
+    }
+}
+
+.myTdIn {
+    min-width: 140px;
+    max-width: 140px;
+    white-space: wrap;
+}
+
+.myTdOut {
+    min-width: 112px;
+    max-width: 112px;
+    white-space: wrap;
+    border-right: 1px solid #EAECEE;
+    box-shadow: 8px 0px 10px -2px #F4F5F6
 }

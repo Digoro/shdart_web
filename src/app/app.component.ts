@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Corp } from './model/corp';
 import { PaginationMeta } from './model/pagination';
 import { CorpService } from './service/corp.service';
@@ -19,13 +19,51 @@ export class AppComponent implements OnInit {
   nextPage: number;
   currentLimit = 30;
   meta: PaginationMeta;
+  @ViewChild('th') th: ElementRef<any>;
+  @ViewChild('thView') thView: ElementRef<any>;
+  observer: IntersectionObserver;
 
   constructor(
     private corpService: CorpService
   ) { }
 
   ngOnInit(): void {
-    this.setCorps(1, 30);
+    this.corpService.searchCorp({ page: 1, limit: 30 }).subscribe(resp => {
+      this.corps = resp.items;
+      this.meta = resp.meta;
+      this.pagination = { limit: resp.meta.itemsPerPage, offset: resp.meta.currentPage, count: resp.meta.totalItems };
+      this.setPagination(resp.meta);
+    });
+    this.observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        console.log('in');
+        const elements = document.getElementsByClassName('myTd');
+        for (const element of elements) {
+          element.classList.add('myTdIn');
+          element.classList.remove('myTdOut');
+        }
+        this.th.nativeElement.style.minWidth = '100%';
+        this.th.nativeElement.style.maxWidth = '100%';
+        this.th.nativeElement.style.whiteSpace = 'nowrap';
+      } else {
+        console.log('out');
+        const elements = document.getElementsByClassName('myTd');
+        for (const element of elements) {
+          element.classList.add('myTdOut');
+          element.classList.remove('myTdIn');
+        }
+        this.th.nativeElement.style.minWidth = '100px';
+        this.th.nativeElement.style.maxWidth = '100px';
+        this.th.nativeElement.style.whiteSpace = 'wrap';
+      }
+    });
+  }
+
+  setTableObserver() {
+    setTimeout(() => {
+      this.observer.unobserve(this.thView.nativeElement);
+      this.observer.observe(this.thView.nativeElement);
+    });
   }
 
   setCorps(page: number, limit: number) {
@@ -46,6 +84,7 @@ export class AppComponent implements OnInit {
   }
 
   private setPagination(meta) {
+    this.setTableObserver()
     this.currentPage = +meta.currentPage;
     const lastPage = +meta.totalPages;
     if (this.currentPage + 1 <= lastPage) {
