@@ -1,0 +1,39 @@
+<div style="display: block;position:sticky;left:0px;background: white;">
+    <div style="font-size: 24px;padding: 16px 24px 24px 24px;font-weight: 700;">SH증권</div>
+</div>
+
+<div class="frame">
+    <div class="section-md">
+        <!-- <div style="display: flex; flex-wrap: nowrap; overflow-x: auto;gap:8px;">
+          <div *ngFor="let card of cards"
+            style="height: 240px;background: rgb(209, 209, 255);padding:24px;flex: 0 0 auto;cursor: pointer;">
+            <div>{{card.name}}</div>
+            <div>{{card.desc}}</div>
+          </div>
+        </div> -->
+        <div class="section-title">주식 골라보기</div>
+        <div style="display:flex;flex-direction: column;gap: 16px;">
+            <div *ngFor="let card of cards">
+                <div style="display:flex;gap: 16px;">
+                    <div *ngFor="let v of card"
+                        style="width:50%;aspect-ratio: 1 / 1;padding:24px; border-radius: 24px;cursor: pointer;"
+                        [ngStyle]="{'background':v.color}" (click)="goTo()">
+                        <div style="color:#6E7D6F;font-size: 14px;">{{v.desc}}</div>
+                        <div style="font-size: 20px;font-weight: 500;">{{v.name}}</div>
+                        <div style="text-align: center;padding:16px 16px 0px 16px">
+                            <img [src]="'/assets/'+v.img+'.png'" style="width: 68px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section-md">
+        <div class="section-title">전체 보기</div>
+        <div>준비 중입니다..</div>
+    </div>
+    <div class="section-md">
+        <div class="section-title">한 눈에 보기</div>
+        <div>준비 중입니다..</div>
+    </div>
+</div>
