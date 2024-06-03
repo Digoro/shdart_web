@@ -3,6 +3,7 @@ import { PaginationSearchDto } from "./pagination";
 export interface Corp {
     id: number;
     name: string;
+    logo: string;
     market: string;
     industry: string;
     createdAt: Date;

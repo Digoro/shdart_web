@@ -1,4 +1,6 @@
+import { Location } from '@angular/common';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { ActivatedRoute } from '@angular/router';
 import { Corp, CorpSearchDto } from 'src/app/model/corp';
 import { PaginationMeta } from 'src/app/model/pagination';
@@ -25,9 +27,14 @@ export class ThemePage implements OnInit {
   observer: IntersectionObserver;
   theme: any;
 
+  selectedQuestion: string;
+  standards;
+
   constructor(
     private corpService: CorpService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public location: Location,
+    private bottomSheet: MatBottomSheet
   ) { }
 
   ngOnInit(): void {
@@ -36,7 +43,6 @@ export class ThemePage implements OnInit {
       this.setCorps(1, 30);
       this.observer = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting) {
-          console.log('in');
           const elements = document.getElementsByClassName('myTd');
           for (const element of elements) {
             element.classList.add('myTdIn');
@@ -46,7 +52,6 @@ export class ThemePage implements OnInit {
           this.th.nativeElement.style.maxWidth = '100%';
           this.th.nativeElement.style.whiteSpace = 'nowrap';
         } else {
-          console.log('out');
           const elements = document.getElementsByClassName('myTd');
           for (const element of elements) {
             element.classList.add('myTdOut');
@@ -90,7 +95,7 @@ export class ThemePage implements OnInit {
       searchDto = {
         page, limit,
         netProfitIncreaseRatio: 10,
-        netProfitPerYearIncreaseRatio: 3,
+        netProfitPerYearIncreaseRatio: 10,
       }
     } else if (theme === '안정 성장주') {
       searchDto = {
@@ -109,7 +114,7 @@ export class ThemePage implements OnInit {
     } else if (theme === '고수익 저평가') {
       searchDto = {
         page, limit,
-        per: 10,
+        per: 15,
         roe: 15,
       }
     } else if (theme === '돈 잘버는 회사 찾기') {
@@ -118,6 +123,7 @@ export class ThemePage implements OnInit {
         roe: 15,
       }
     }
+    this.standards = Object.keys(searchDto).filter(v => v != 'page' && v != 'limit');
     return searchDto;
   }
 
@@ -146,5 +152,14 @@ export class ThemePage implements OnInit {
         this.setPagination(resp.meta);
       })
     }
+  }
+
+  openBm(template, key: string) {
+    this.selectedQuestion = key;
+    this.bottomSheet.open(template, { closeOnNavigation: true, panelClass: 'nnb-bottom-sheet' });
+  }
+
+  closeBm() {
+    this.bottomSheet.dismiss();
   }
 }
