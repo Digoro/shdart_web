@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Corp } from 'src/app/model/corp';
+import { ActivatedRoute } from '@angular/router';
+import { Corp, CorpSearchDto } from 'src/app/model/corp';
 import { PaginationMeta } from 'src/app/model/pagination';
 import { CorpService } from 'src/app/service/corp.service';
 
@@ -22,41 +23,41 @@ export class ThemePage implements OnInit {
   @ViewChild('th') th: ElementRef<any>;
   @ViewChild('thView') thView: ElementRef<any>;
   observer: IntersectionObserver;
+  theme: any;
 
   constructor(
     private corpService: CorpService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
-    this.corpService.searchCorp({ page: 1, limit: 30 }).subscribe(resp => {
-      this.corps = resp.items;
-      this.meta = resp.meta;
-      this.pagination = { limit: resp.meta.itemsPerPage, offset: resp.meta.currentPage, count: resp.meta.totalItems };
-      this.setPagination(resp.meta);
-    });
-    this.observer = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) {
-        console.log('in');
-        const elements = document.getElementsByClassName('myTd');
-        for (const element of elements) {
-          element.classList.add('myTdIn');
-          element.classList.remove('myTdOut');
+    this.route.queryParams.subscribe(resp => {
+      this.theme = resp;
+      this.setCorps(1, 30);
+      this.observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+          console.log('in');
+          const elements = document.getElementsByClassName('myTd');
+          for (const element of elements) {
+            element.classList.add('myTdIn');
+            element.classList.remove('myTdOut');
+          }
+          this.th.nativeElement.style.minWidth = '100%';
+          this.th.nativeElement.style.maxWidth = '100%';
+          this.th.nativeElement.style.whiteSpace = 'nowrap';
+        } else {
+          console.log('out');
+          const elements = document.getElementsByClassName('myTd');
+          for (const element of elements) {
+            element.classList.add('myTdOut');
+            element.classList.remove('myTdIn');
+          }
+          this.th.nativeElement.style.minWidth = '100px';
+          this.th.nativeElement.style.maxWidth = '100px';
+          this.th.nativeElement.style.whiteSpace = 'wrap';
         }
-        this.th.nativeElement.style.minWidth = '100%';
-        this.th.nativeElement.style.maxWidth = '100%';
-        this.th.nativeElement.style.whiteSpace = 'nowrap';
-      } else {
-        console.log('out');
-        const elements = document.getElementsByClassName('myTd');
-        for (const element of elements) {
-          element.classList.add('myTdOut');
-          element.classList.remove('myTdIn');
-        }
-        this.th.nativeElement.style.minWidth = '100px';
-        this.th.nativeElement.style.maxWidth = '100px';
-        this.th.nativeElement.style.whiteSpace = 'wrap';
-      }
-    });
+      });
+    })
   }
 
   setTableObserver() {
@@ -67,12 +68,57 @@ export class ThemePage implements OnInit {
   }
 
   setCorps(page: number, limit: number) {
-    this.corpService.searchCorp({ page, limit }).subscribe(resp => {
+    const dto = this.getSearchDto(page, limit, this.theme.name);
+    this.corpService.searchCorp(dto).subscribe(resp => {
       this.corps = resp.items;
       this.meta = resp.meta;
       this.pagination = { limit: resp.meta.itemsPerPage, offset: resp.meta.currentPage, count: resp.meta.totalItems };
       this.setPagination(resp.meta);
     })
+  }
+
+  getSearchDto(page, limit, theme): CorpSearchDto {
+    let searchDto: CorpSearchDto;
+    if (theme === '저평가된 성장주') {
+      searchDto = {
+        page, limit,
+        revenuePerYearIncreaseRatio: 10,
+        netProfitPerYearIncreaseRatio: 20,
+        per: 20
+      }
+    } else if (theme === '성장 기대주') {
+      searchDto = {
+        page, limit,
+        netProfitIncreaseRatio: 10,
+        netProfitPerYearIncreaseRatio: 3,
+      }
+    } else if (theme === '안정 성장주') {
+      searchDto = {
+        page, limit,
+        netProfitPerYearIncreaseRatio: 10,
+        continuousIncreaseNetProfit: 1,
+        roe: 15,
+      }
+    } else if (theme === '아직 저렴한 가치주') {
+      searchDto = {
+        page, limit,
+        per: 15,
+        pbr: 1.5,
+        netProfitPerYearIncreaseRatio: 10,
+      }
+    } else if (theme === '고수익 저평가') {
+      searchDto = {
+        page, limit,
+        per: 10,
+        roe: 15,
+      }
+    } else if (theme === '돈 잘버는 회사 찾기') {
+      searchDto = {
+        page, limit,
+        roe: 15,
+      }
+    }
+    return searchDto;
   }
 
   onTableEvent(event: any): void {
@@ -84,7 +130,7 @@ export class ThemePage implements OnInit {
   }
 
   private setPagination(meta) {
-    this.setTableObserver()
+    this.setTableObserver();
     this.currentPage = +meta.currentPage;
     const lastPage = +meta.totalPages;
     if (this.currentPage + 1 <= lastPage) {
@@ -94,7 +140,8 @@ export class ThemePage implements OnInit {
 
   onScroll() {
     if (this.currentPage < this.nextPage) {
-      this.corpService.searchCorp({ page: +this.nextPage, limit: this.currentLimit }).subscribe(resp => {
+      const dto = this.getSearchDto(+this.nextPage, this.currentLimit, this.theme.name);
+      this.corpService.searchCorp(dto).subscribe(resp => {
         this.corps = [...this.corps, ...resp.items];
         this.setPagination(resp.meta);
       })

@@ -1,0 +1,5 @@
+<div class="container" [ngStyle]="style">
+  <img *ngIf="isBackButton" src="https://nonunbub.s3.ap-northeast-2.amazonaws.com/static/fe-assets/new/arrow-left.svg"
+    class="nnb-icon" (click)="back()">
+  <ng-container *ngIf="headerTpl" [ngTemplateOutlet]="headerTpl"></ng-container>
+</div>

@@ -32,7 +32,9 @@ export class HomePage implements OnInit {
 
 
 
-  goTo() {
-    this.router.navigate(['/theme']);
+  goToTheme(name: string) {
+    this.router.navigate(['/theme'], {
+      queryParams: this.cards.flat().filter(v => v.name == name)[0]
+    });
   }
 }

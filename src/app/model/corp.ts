@@ -1,3 +1,5 @@
+import { PaginationSearchDto } from "./pagination";
+
 export interface Corp {
     id: number;
     name: string;
@@ -24,6 +26,26 @@ export interface Finance {
     bps: number;
     pbr: number;
     dividendPerShare: number;
+    revenuePerYearIncreaseRatio: number;
+    netProfitPerYearIncreaseRatio: number;
+    operatingProfitIncreaseRatio: number;
+    netProfitIncreaseRatio: number;
+    continuousIncreaseNetProfit: number;
+    continuousIncreaseOperatingProfit: number;
+    continuousincreaseDividends: number;
     createdAt: Date;
     updatedAt: Date;
+}
+
+export interface CorpSearchDto extends PaginationSearchDto {
+    revenuePerYearIncreaseRatio?: number;
+    netProfitPerYearIncreaseRatio?: number;
+    per?: number;
+    netProfitIncreaseRatio?: number;
+    continuousIncreaseNetProfit?: number;
+    roe?: number;
+    continuousIncreaseOperatingProfit?: number;
+    operatingProfitIncreaseRatio?: number;
+    pbr?: number;
+    continuousincreaseDividends?: number;
 }

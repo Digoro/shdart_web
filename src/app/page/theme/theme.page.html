@@ -1,54 +1,64 @@
+<header class="header"></header>
 <div class="frame">
-    <div class="section-md">
-        <div style="padding:0px 24px">
-            <div style="color:#6A7684;">주식 {{meta?.totalItems|number}}{{meta?.totalItems?'개':''}}</div>
+    <div class="section-md" style="padding-top: 8px;">
+        <div *ngIf="theme" style="border-radius: 24px;display:flex;padding:16px 32px;justify-content: space-between;
+            align-items: center;margin-bottom: 24px;" [ngStyle]="{'background':theme.color}">
+            <div>
+                <div style="color:#6E7D6F;font-size: 14px;">{{theme.desc}}</div>
+                <div style="font-size: 20px;font-weight: 500;">{{theme.name}}</div>
+            </div>
+            <img [src]="'/assets/'+theme.img+'.png'" style="width: 68px;">
         </div>
-        <table>
-            <thead>
-                <tr>
-                    <th #th style="text-align: left;position: sticky; left: 0;background: white;z-index:999">주식</th>
-                    <th #thView>매출액</th>
-                    <th>영업이익</th>
-                    <th>당기순이익</th>
-                    <th>영업이익률</th>
-                    <th>순이익률</th>
-                    <th>ROE</th>
-                    <th>EPS</th>
-                    <th>PER</th>
-                    <th>BPS</th>
-                    <th>PBR</th>
-                    <th>주당배당금</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let corp of corps">
-                    <td class="myTd"
-                        style="text-align: left;position: sticky; left: 0;background: white;padding: 8px 24px;">
-                        {{corp?.name}}</td>
-                    <td class="otherTd">{{corp?.finance?.fullRevenue |
-                        number}}{{corp?.finance?.fullRevenue?'억원':''}}</td>
-                    <td class="otherTd">{{corp?.finance?.operatingProfit|
-                        number}}{{corp?.finance?.operatingProfit?'억원':''}}
-                    </td>
-                    <td class="otherTd">{{corp?.finance?.netIncome| number}}{{corp?.finance?.netIncome?'억원':''}}
-                    </td>
-                    <td class="otherTd">
-                        {{corp?.finance?.operatingProfitMargin|number}}{{corp?.finance?.operatingProfitMargin?'%':''}}
-                    </td>
-                    <td class="otherTd">{{corp?.finance?.netProfitMargin|
-                        number}}{{corp?.finance?.netProfitMargin?'%':''}}</td>
-                    <td class="otherTd">{{corp?.finance?.roe| number}}{{corp?.finance?.roe?'%':''}}</td>
-                    <td class="otherTd">{{corp?.finance?.eps| number}}{{corp?.finance?.eps?'원':''}}</td>
-                    <td class="otherTd">{{corp?.finance?.per| number}}{{corp?.finance?.per?'배':''}}</td>
-                    <td class="otherTd">{{corp?.finance?.bps| number}}{{corp?.finance?.bps?'원':''}}</td>
-                    <td class="otherTd">{{corp?.finance?.pbr| number}}{{corp?.finance?.pbr?'배':''}}</td>
-                    <td class="otherTd">{{corp?.finance?.dividendPerShare|
-                        number}}{{corp?.finance?.dividendPerShare?'원':''}}
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+
+        <div style="margin-bottom:4px;color:#6A7684;">주식 {{meta?.totalItems|number}}{{meta?.totalItems?'개':''}}</div>
+        <div style="overflow: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th #th style=" text-align: left;position: sticky; left: 0;background:
+            white;z-index:1;padding:0px">
+                            주식</th>
+                        <th #thView>매출액</th>
+                        <th>영업이익</th>
+                        <th>당기순이익</th>
+                        <th>영업이익률</th>
+                        <th>순이익률</th>
+                        <th>ROE</th>
+                        <th>EPS</th>
+                        <th>PER</th>
+                        <th>BPS</th>
+                        <th>PBR</th>
+                        <th>주당배당금</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let corp of corps">
+                        <td class="myTd" style="text-align: left;position: sticky; left: 0;background: white;">
+                            {{corp?.name}}</td>
+                        <td class="otherTd">{{corp?.finance?.fullRevenue |
+                            number}}{{corp?.finance?.fullRevenue?'억원':''}}</td>
+                        <td class="otherTd">{{corp?.finance?.operatingProfit|
+                            number}}{{corp?.finance?.operatingProfit?'억원':''}}
+                        </td>
+                        <td class="otherTd">{{corp?.finance?.netIncome| number}}{{corp?.finance?.netIncome?'억원':''}}
+                        </td>
+                        <td class="otherTd">
+                            {{corp?.finance?.operatingProfitMargin|number}}{{corp?.finance?.operatingProfitMargin?'%':''}}
+                        </td>
+                        <td class="otherTd">{{corp?.finance?.netProfitMargin|
+                            number}}{{corp?.finance?.netProfitMargin?'%':''}}</td>
+                        <td class="otherTd">{{corp?.finance?.roe| number}}{{corp?.finance?.roe?'%':''}}</td>
+                        <td class="otherTd">{{corp?.finance?.eps| number}}{{corp?.finance?.eps?'원':''}}</td>
+                        <td class="otherTd">{{corp?.finance?.per| number}}{{corp?.finance?.per?'배':''}}</td>
+                        <td class="otherTd">{{corp?.finance?.bps| number}}{{corp?.finance?.bps?'원':''}}</td>
+                        <td class="otherTd">{{corp?.finance?.pbr| number}}{{corp?.finance?.pbr?'배':''}}</td>
+                        <td class="otherTd">{{corp?.finance?.dividendPerShare|
+                            number}}{{corp?.finance?.dividendPerShare?'원':''}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div infinite-scroll (scrolled)="onScroll()"></div>
+        </div>
     </div>
 </div>
-
-<div infinite-scroll (scrolled)="onScroll()"></div>

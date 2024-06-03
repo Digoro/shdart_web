@@ -19,6 +19,6 @@ export class PaginationMeta {
 }
 
 export interface PaginationSearchDto {
-    page?: number;
-    limit?: number;
+    page: number;
+    limit: number;
 }

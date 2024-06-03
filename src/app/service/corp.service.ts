@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
-import { Corp } from '../model/corp';
+import { Corp, CorpSearchDto } from '../model/corp';
 import { Pagination } from '../model/pagination';
 import { UtilService } from './util.service';
 
@@ -20,7 +20,7 @@ export class CorpService {
     return this.http.get<Pagination<Corp>>(`/api/search/finance?${query}`);
   }
 
-  searchCorp(dto: any): Observable<Pagination<Corp>> {
+  searchCorp(dto: CorpSearchDto): Observable<Pagination<Corp>> {
     const query = this.utilService.setQueryParams(dto);
     return this.http.get<Pagination<Corp>>(`/api/search/corp?${query}`).pipe(
       map(v => {

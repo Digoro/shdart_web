@@ -4,10 +4,12 @@ import { LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { HeaderComponent } from './component/header/header.component';
 registerLocaleData(localeKo);
 
 @NgModule({
   declarations: [
+    HeaderComponent
   ],
   imports: [
     RouterModule,
@@ -22,6 +24,7 @@ registerLocaleData(localeKo);
     ReactiveFormsModule,
     InfiniteScrollModule,
     CommonModule,
+    HeaderComponent
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'ko' }

@@ -17,7 +17,7 @@
                 <div style="display:flex;gap: 16px;">
                     <div *ngFor="let v of card"
                         style="width:50%;aspect-ratio: 1 / 1;padding:24px; border-radius: 24px;cursor: pointer;"
-                        [ngStyle]="{'background':v.color}" (click)="goTo()">
+                        [ngStyle]="{'background':v.color}" (click)="goToTheme(v.name)">
                         <div style="color:#6E7D6F;font-size: 14px;">{{v.desc}}</div>
                         <div style="font-size: 20px;font-weight: 500;">{{v.name}}</div>
                         <div style="text-align: center;padding:16px 16px 0px 16px">
