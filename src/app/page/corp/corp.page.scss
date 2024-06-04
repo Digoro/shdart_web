@@ -37,19 +37,6 @@ table {
     }
 }
 
-.myTdIn {
-    min-width: 140px;
-    max-width: 140px;
-    white-space: wrap;
-}
-
-.myTdOut {
-    min-width: 120px;
-    max-width: 120px;
-    white-space: wrap;
-    border-right: 1px solid #EAECEE;
-    box-shadow: 8px 0px 10px -2px #F4F5F6
-}
 
 #summary::after {
     content: "|";

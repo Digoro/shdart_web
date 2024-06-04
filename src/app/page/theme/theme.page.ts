@@ -1,10 +1,11 @@
 import { Location } from '@angular/common';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Corp, CorpSearchDto } from 'src/app/model/corp';
 import { PaginationMeta } from 'src/app/model/pagination';
 import { CorpService } from 'src/app/service/corp.service';
+declare var TypeHangul;
 
 @Component({
   selector: 'theme',
@@ -28,13 +29,18 @@ export class ThemePage implements OnInit {
   theme: any;
 
   selectedQuestion: string;
-  standards;
+  selectedCorp: Corp;
+  standards: { key: string, value: number }[];
+  summary: string;
+
+  sheet;
 
   constructor(
     private corpService: CorpService,
     private route: ActivatedRoute,
     public location: Location,
-    private bottomSheet: MatBottomSheet
+    private bottomSheet: MatBottomSheet,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -84,7 +90,7 @@ export class ThemePage implements OnInit {
 
   getSearchDto(page, limit, theme): CorpSearchDto {
     let searchDto: CorpSearchDto;
-    if (theme === '저평가된 성장주') {
+    if (theme === '저평가 성장주') {
       searchDto = {
         page, limit,
         revenuePerYearIncreaseRatio: 10,
@@ -95,16 +101,16 @@ export class ThemePage implements OnInit {
       searchDto = {
         page, limit,
         netProfitIncreaseRatio: 10,
-        netProfitPerYearIncreaseRatio: 10,
+        netProfitPerYearIncreaseRatio: 3,
       }
     } else if (theme === '안정 성장주') {
       searchDto = {
         page, limit,
         netProfitPerYearIncreaseRatio: 10,
-        continuousIncreaseNetProfit: 1,
+        continuousIncreaseNetProfit: 2,
         roe: 15,
       }
-    } else if (theme === '아직 저렴한 가치주') {
+    } else if (theme === '저렴한 가치주') {
       searchDto = {
         page, limit,
         per: 15,
@@ -114,16 +120,22 @@ export class ThemePage implements OnInit {
     } else if (theme === '고수익 저평가') {
       searchDto = {
         page, limit,
-        per: 15,
+        per: 10,
         roe: 15,
       }
-    } else if (theme === '돈 잘버는 회사 찾기') {
+    } else if (theme === '돈 잘버는 회사') {
       searchDto = {
         page, limit,
+        operatingProfitIncreaseRatio: 20,
         roe: 15,
       }
     }
-    this.standards = Object.keys(searchDto).filter(v => v != 'page' && v != 'limit');
+    this.standards = Object.keys(searchDto).filter(v => v != 'page' && v != 'limit').map(v => {
+      return {
+        key: v,
+        value: searchDto[v]
+      }
+    })
     return searchDto;
   }
 
@@ -154,12 +166,31 @@ export class ThemePage implements OnInit {
     }
   }
 
-  openBm(template, key: string) {
-    this.selectedQuestion = key;
-    this.bottomSheet.open(template, { closeOnNavigation: true, panelClass: 'nnb-bottom-sheet' });
+  openBm(template, key?: string, corp?: Corp) {
+    if (key) this.selectedQuestion = key;
+    if (corp) {
+      this.selectedCorp = corp;
+      this.corpService.summaryTheme(corp.name).subscribe(resp => {
+        this.summary = resp.response;
+        setTimeout(() => {
+          TypeHangul.type('#summary', {
+            intervalType: 1
+          });
+        })
+      })
+    }
+    this.sheet = this.bottomSheet.open(template, { closeOnNavigation: true, panelClass: 'nnb-bottom-sheet' });
+    this.sheet.afterDismissed().subscribe(() => {
+      this.summary = undefined;
+    })
   }
 
   closeBm() {
+    this.summary = undefined;
     this.bottomSheet.dismiss();
+  }
+
+  goToCorp(corp: Corp) {
+    this.router.navigate(['/corp', corp.code])
   }
 }

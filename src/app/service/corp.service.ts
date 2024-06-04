@@ -20,6 +20,10 @@ export class CorpService {
     return this.http.get<Pagination<Corp>>(`/api/search/finance?${query}`);
   }
 
+  getCorp(corpCode: string): Observable<Corp> {
+    return this.http.get<Corp>(`/api/corp/${corpCode}`);
+  }
+
   searchCorp(dto: CorpSearchDto): Observable<Pagination<Corp>> {
     const query = this.utilService.setQueryParams(dto);
     return this.http.get<Pagination<Corp>>(`/api/search/corp?${query}`).pipe(
@@ -31,5 +35,9 @@ export class CorpService {
         return v;
       })
     );
+  }
+
+  summaryTheme(corpName: string): Observable<{ response: string }> {
+    return this.http.get<{ response: string }>(`api/summary/theme?corpName=${corpName}`);
   }
 }

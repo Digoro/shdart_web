@@ -25,72 +25,94 @@
             <hr style="margin:11px -16px 16px -10px">
             <div style="display: flex;gap:4px;flex-direction: column;">
                 <div *ngFor="let standard of standards">
-                    <div *ngIf="standard === 'revenuePerYearIncreaseRatio'"
+                    <div *ngIf="standard.key === 'revenuePerYearIncreaseRatio'"
                         style="display: flex;justify-content: space-between;align-items: center;">
                         <div style="display: flex;gap:4px;align-items: center;">
                             <div class="nnb-badge nnb-badge-md nnb-badge-outline">연평균 매출액 증감률</div>
                             <img style="width:18px;height:18px;cursor: pointer;" src="/assets/information.png"
                                 (click)="openBm(descTpl,'연평균 매출액 증감률')">
                         </div>
-                        <div class="desc">10% 이상 (최근 3년)</div>
+                        <div class="desc">{{standard.value}}% 이상 (최근 3년)</div>
                     </div>
-                    <div *ngIf="standard === 'netProfitPerYearIncreaseRatio'"
+                    <div *ngIf="standard.key === 'netProfitPerYearIncreaseRatio'"
                         style="display: flex;justify-content: space-between;align-items: center;">
                         <div style="display: flex;gap:4px;align-items: center;">
                             <div class="nnb-badge nnb-badge-md nnb-badge-outline">연평균 순이익 증감률</div>
                             <img style="width:18px;height:18px;cursor: pointer;" src="/assets/information.png"
                                 (click)="openBm(descTpl,'연평균 순이익 증감률')">
                         </div>
-                        <div class="desc">20% 이상 (최근 3년)</div>
+                        <div class="desc">{{standard.value}}% 이상 (최근 3년)</div>
                     </div>
-                    <div *ngIf="standard === 'per'"
+                    <div *ngIf="standard.key === 'per'"
                         style="display: flex;justify-content: space-between;align-items: center;">
                         <div style="display: flex;gap:4px;align-items: center;">
                             <div class="nnb-badge nnb-badge-md nnb-badge-outline">PER</div>
                             <img style="width:18px;height:18px;cursor: pointer;" src="/assets/information.png"
                                 (click)="openBm(descTpl,'PER')">
                         </div>
-                        <div class="desc">20배 이하</div>
+                        <div class="desc">{{standard.value}}배 이하</div>
                     </div>
-                    <div *ngIf="standard === 'netProfitIncreaseRatio'"
+                    <div *ngIf="standard.key === 'pbr'"
+                        style="display: flex;justify-content: space-between;align-items: center;">
+                        <div style="display: flex;gap:4px;align-items: center;">
+                            <div class="nnb-badge nnb-badge-md nnb-badge-outline">PBR</div>
+                            <img style="width:18px;height:18px;cursor: pointer;" src="/assets/information.png"
+                                (click)="openBm(descTpl,'PBR')">
+                        </div>
+                        <div class="desc">{{standard.value}}배 이하</div>
+                    </div>
+                    <div *ngIf="standard.key === 'netProfitIncreaseRatio'"
                         style="display: flex;justify-content: space-between;align-items: center;">
                         <div style="display: flex;gap:4px;align-items: center;">
                             <div class="nnb-badge nnb-badge-md nnb-badge-outline">순이익 증감률</div>
                             <img style="width:18px;height:18px;cursor: pointer;" src="/assets/information.png"
                                 (click)="openBm(descTpl,'순이익 증감률')">
                         </div>
-                        <div class="desc">10% 이상</div>
+                        <div class="desc">{{standard.value}}% 이상</div>
                     </div>
-                    <div *ngIf="standard === 'roe'"
+                    <div *ngIf="standard.key === 'roe'"
                         style="display: flex;justify-content: space-between;align-items: center;">
                         <div style="display: flex;gap:4px;align-items: center;">
                             <div class="nnb-badge nnb-badge-md nnb-badge-outline">ROE</div>
                             <img style="width:18px;height:18px;cursor: pointer;" src="/assets/information.png"
                                 (click)="openBm(descTpl,'ROE')">
                         </div>
-                        <div class="desc">15% 이상</div>
+                        <div class="desc">{{standard.value}}% 이상</div>
                     </div>
-                    <div *ngIf="standard === 'continuousIncreaseNetProfit'"
+                    <div *ngIf="standard.key === 'continuousIncreaseNetProfit'"
                         style="display: flex;justify-content: space-between;align-items: center;">
                         <div style="display: flex;gap:4px;align-items: center;">
                             <div class="nnb-badge nnb-badge-md nnb-badge-outline">순이익 연속증가</div>
                             <img style="width:18px;height:18px;cursor: pointer;" src="/assets/information.png"
                                 (click)="openBm(descTpl,'순이익 연속증가')">
                         </div>
-                        <div class="desc">3년 이상</div>
+                        <div class="desc">{{standard.value}}년 이상</div>
+                    </div>
+                    <div *ngIf="standard.key === 'operatingProfitIncreaseRatio'"
+                        style="display: flex;justify-content: space-between;align-items: center;">
+                        <div style="display: flex;gap:4px;align-items: center;">
+                            <div class="nnb-badge nnb-badge-md nnb-badge-outline">영업이익 증감률</div>
+                            <img style="width:18px;height:18px;cursor: pointer;" src="/assets/information.png"
+                                (click)="openBm(descTpl,'영업이익 증감률')">
+                        </div>
+                        <div class="desc">{{standard.value}}년 이상</div>
                     </div>
                 </div>
             </div>
         </div>
-
         <div style="margin-bottom:4px;color:#6A7684;">주식 {{meta?.totalItems|number}}{{meta?.totalItems?'개':''}}</div>
         <div style="overflow: auto;">
             <table>
                 <thead>
                     <tr>
-                        <th #th style=" text-align: left;position: sticky; left: 0;background:
+                        <th #th style="text-align: left;position: sticky; left: 0;background:
             white;z-index:1;padding:0px">
-                            주식</th>
+                            <div style="display: flex;gap:4px;align-items: center;">
+                                <div>주식</div>
+                                <img style="width:18px;height:18px;cursor: pointer;" src="/assets/information.png"
+                                    (click)="openBm(corpDescTpl)">
+                            </div>
+                        </th>
                         <th #thView>매출액</th>
                         <th>영업이익</th>
                         <th>당기순이익</th>
@@ -107,9 +129,9 @@
                 <tbody>
                     <tr *ngFor="let corp of corps">
                         <td class="myTd" style="text-align: left;position: sticky; left: 0;background: white;">
-                            <div style="display:flex;gap:4px;align-items: center;">
+                            <div style="display:flex;gap:4px;align-items: center;" (click)="goToCorp(corp)">
                                 <img [src]="corp.logo" style="width:24px;height:24px">
-                                <div>{{corp?.name}}</div>
+                                <div style="cursor: pointer;">{{corp?.name}}</div>
                             </div>
                         </td>
                         <td class="otherTd">{{corp?.finance?.fullRevenue |
@@ -140,7 +162,6 @@
     </div>
 </div>
 
-
 <ng-template #descTpl>
     <div style="font-size: 22px;font-weight: 600;margin-bottom:24px">{{selectedQuestion}}</div>
     <ul *ngIf="selectedQuestion === '연평균 매출액 증감률'" style="padding: 0px 16px;">
@@ -159,6 +180,10 @@
         <li>주가를 주당순이익으로 나눈 값으로 PER이 낮을 수록 기업이 내는 이익에 비해 주가가 저평가 되어 있다는 의미에요.</li>
         <li>일반적으로 주가수익비율이 10배 이하면 주가가 낮게 평가되고 있다고 볼 수 있어요.</li>
     </ul>
+    <ul *ngIf="selectedQuestion === 'PBR'" style="padding: 0px 16px;">
+        <li>주가를 주당순자산으로 나눈 값으로 PBR이 낮을 수록 기업의 실제 자산가치 대비 주가가 저평가 되어 있다는 의미에요.</li>
+        <li>일반적으로 1.5배 미만이면 주가가 순자산 가치보다 탖게 평가되고 있다고 볼 수 있어요.</li>
+    </ul>
     <ul *ngIf="selectedQuestion === '순이익 증감률'" style="padding: 0px 16px;">
         <li>이전 기간 대비 순이익이 얼마나 변했는지를 나타내는 비율이에요.</li>
         <li>기업의 수익성 변화를 확인할 수 있어요.</li>
@@ -171,4 +196,26 @@
         <li>순이익이 연속적으로 증가하는 횟수를 나타낸 지표에요.</li>
         <li>지속적인 순이익 증가는 기업의 이익 성장성이 좋다는 의미로 해석할 수 있어요.</li>
     </ul>
+    <ul *ngIf="selectedQuestion === '영업이익 증감률'" style="padding: 0px 16px;">
+        <li>이전 기간 대비 영업이익이 증가하거나 감소한 정도를 나타내는 비율이에요.</li>
+        <li>기업의 수익성의 핵심 지표로 사용돼요.</li>
+    </ul>
+    <button class="nnb-btn-md nnb-btn-block nnb-btn-secondary" (click)="closeBm()">확인</button>
+</ng-template>
+
+<ng-template #summaryTpl>
+    <div style="margin-bottom:24px;display: flex;gap:8px;align-items: center;">
+        <img [src]="selectedCorp.logo" style="width:32px;height:32px">
+        <div style="font-size: 22px;font-weight: 600;">{{selectedCorp.name}}</div>
+    </div>
+    <div style="font-size: 14px;font-weight: 600;margin-bottom:4px">Stock AI 요약</div>
+    <div *ngIf="!summary" class="desc loading-ellipsis" style="margin-bottom:32px">요약 중입니다</div>
+    <div *ngIf="summary" id="summary" style="margin-bottom:32px">{{summary}}</div>
+    <button class="nnb-btn-md nnb-btn-block nnb-btn-secondary" (click)="closeBm()">확인</button>
+</ng-template>
+
+<ng-template #corpDescTpl>
+    <div style="font-size: 22px;font-weight: 600;margin-bottom:24px">Stock AI</div>
+    <div>각 주식 종목을 클릭하면 Stock AI의 요약 정보와 연도 별 주요 재무 정보를 확인하실 수 있습니다.</div>
+    <button class="nnb-btn-md nnb-btn-block nnb-btn-secondary" style="margin-top: 16px;" (click)="closeBm()">확인</button>
 </ng-template>
