@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CorpService } from 'src/app/service/corp.service';
+declare var TypeHangul;
 
 @Component({
   selector: 'home',
@@ -21,13 +23,22 @@ export class HomePage implements OnInit {
       { name: '돈 잘버는 회사', desc: '매출과 이익이 큰', color: '#F5E6BA', img: 'money-box' }
     ]
   ];
+  summary: string;
 
   constructor(
-    private router: Router
+    private router: Router,
+    private corpService: CorpService
   ) { }
 
   ngOnInit(): void {
-
+    this.corpService.summaryMarket().subscribe(resp => {
+      this.summary = resp.response;
+      setTimeout(() => {
+        TypeHangul.type('#summary', {
+          intervalType: 1
+        });
+      })
+    })
   }
 
 

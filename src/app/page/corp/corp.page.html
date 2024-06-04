@@ -18,10 +18,10 @@
                 <img [src]="corp.logo" style="width:32px;height:32px">
                 <div style="font-size: 22px;font-weight: 600;">{{corp.name}}</div>
             </div>
-            <div style="background: rgb(185, 218, 247);padding: 16px;border-radius: 24px;margin-top: 16px;">
+            <div style="background: rgb(185, 218, 247);padding: 24px;border-radius: 24px;margin-top: 16px;">
                 <div style="font-size: 14px;font-weight: 600;margin-bottom:4px">Stock AI 요약</div>
                 <div *ngIf="!summary" class="desc loading-ellipsis" style="margin-bottom:32px">요약 중입니다</div>
-                <div *ngIf="summary" id="summary" style="margin-bottom:32px">{{summary}}</div>
+                <div *ngIf="summary" id="summary">{{summary}}</div>
             </div>
         </ng-container>
     </div>
@@ -46,7 +46,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let finance of corp.finances">
+                    <tr *ngFor="let finance of corp?.finances">
                         <td class="otherTd">{{finance?.year}}</td>
                         <td class="otherTd">{{finance?.fullRevenue |number}}{{finance?.fullRevenue?'억원':''}}</td>
                         <td class="otherTd">{{finance?.operatingProfit|number}}{{finance?.operatingProfit?'억원':''}}</td>

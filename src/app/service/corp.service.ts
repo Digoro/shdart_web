@@ -40,4 +40,8 @@ export class CorpService {
   summaryCorp(corpName: string): Observable<{ response: string }> {
     return this.http.get<{ response: string }>(`api/summary/corp?corpName=${corpName}`);
   }
+
+  summaryMarket(): Observable<{ response: string }> {
+    return this.http.get<{ response: string }>(`api/summary/market`);
+  }
 }

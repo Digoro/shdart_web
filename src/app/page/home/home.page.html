@@ -4,6 +4,14 @@
 
 <div class="frame">
     <div class="section-md">
+        <div class="section-title">국내 시장 현황</div>
+        <div style="background: rgb(185, 218, 247);padding: 24px;border-radius: 24px;margin-top: 16px;">
+            <div style="font-size: 14px;font-weight: 600;margin-bottom:4px">Stock AI 요약</div>
+            <div *ngIf="!summary" class="desc loading-ellipsis" style="margin-bottom:32px">요약 중입니다</div>
+            <div *ngIf="summary" id="summary">{{summary}}</div>
+        </div>
+    </div>
+    <div class="section-md">
         <!-- <div style="display: flex; flex-wrap: nowrap; overflow-x: auto;gap:8px;">
           <div *ngFor="let card of cards"
             style="height: 240px;background: rgb(209, 209, 255);padding:24px;flex: 0 0 auto;cursor: pointer;">
