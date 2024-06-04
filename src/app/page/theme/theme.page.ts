@@ -31,9 +31,6 @@ export class ThemePage implements OnInit {
   selectedQuestion: string;
   selectedCorp: Corp;
   standards: { key: string, value: number }[];
-  summary: string;
-
-  sheet;
 
   constructor(
     private corpService: CorpService,
@@ -166,27 +163,12 @@ export class ThemePage implements OnInit {
     }
   }
 
-  openBm(template, key?: string, corp?: Corp) {
+  openBm(template, key?: string) {
     if (key) this.selectedQuestion = key;
-    if (corp) {
-      this.selectedCorp = corp;
-      this.corpService.summaryTheme(corp.name).subscribe(resp => {
-        this.summary = resp.response;
-        setTimeout(() => {
-          TypeHangul.type('#summary', {
-            intervalType: 1
-          });
-        })
-      })
-    }
-    this.sheet = this.bottomSheet.open(template, { closeOnNavigation: true, panelClass: 'nnb-bottom-sheet' });
-    this.sheet.afterDismissed().subscribe(() => {
-      this.summary = undefined;
-    })
+    this.bottomSheet.open(template, { closeOnNavigation: true, panelClass: 'nnb-bottom-sheet' });
   }
 
   closeBm() {
-    this.summary = undefined;
     this.bottomSheet.dismiss();
   }
 

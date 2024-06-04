@@ -25,7 +25,7 @@ export class CorpPage implements OnInit {
       this.corpService.getCorp(params.code).subscribe(corp => {
         this.corp = corp;
         this.corp.finances = corp.finances.reverse();
-        this.corpService.summaryTheme(corp.name).subscribe(resp => {
+        this.corpService.summaryCorp(corp.name).subscribe(resp => {
           this.summary = resp.response;
           setTimeout(() => {
             TypeHangul.type('#summary', {

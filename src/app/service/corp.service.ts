@@ -37,7 +37,7 @@ export class CorpService {
     );
   }
 
-  summaryTheme(corpName: string): Observable<{ response: string }> {
-    return this.http.get<{ response: string }>(`api/summary/theme?corpName=${corpName}`);
+  summaryCorp(corpName: string): Observable<{ response: string }> {
+    return this.http.get<{ response: string }>(`api/summary/corp?corpName=${corpName}`);
   }
 }
