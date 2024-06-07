@@ -1,5 +1,6 @@
-<div style="display: block;position:sticky;left:0px;background: white;">
-    <div style="font-size: 24px;padding: 16px 24px 24px 24px;font-weight: 700;">SH증권</div>
+<div class="search-container">
+    <div style="font-size: 24px;font-weight: 700;text-wrap: nowrap;">SH증권</div>
+    <input class="body1-regular search-input" placeholder="기업 또는 상장코드" [(ngModel)]="term" (keyup.enter)="search()">
 </div>
 
 <div class="frame">

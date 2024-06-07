@@ -73,6 +73,13 @@ $app-theme: mat.define-light-theme((
     font-weight: 100;
 }
 
+@font-face {
+    font-family: 'KyoboHandwriting2023wsa';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2404-2@1.0/KyoboHandwriting2023wsa.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
 * {
     font-family: 'Pretendard', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
 }

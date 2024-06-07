@@ -24,6 +24,7 @@ export class HomePage implements OnInit {
     ]
   ];
   summary: string;
+  term: string;
 
   constructor(
     private router: Router,
@@ -41,7 +42,9 @@ export class HomePage implements OnInit {
     })
   }
 
-
+  search() {
+    this.router.navigate(['/search', this.term]);
+  }
 
   goToTheme(name: string) {
     this.router.navigate(['/theme'], {

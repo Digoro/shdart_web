@@ -1,0 +1,33 @@
+<header class="header" [headerTpl]="headerTpl" [isBackButton]="false" [style]="{}">
+</header>
+<ng-template #headerTpl>
+    <div style="display:flex">
+        <div style="flex:1">
+            <img src="https://nonunbub.s3.ap-northeast-2.amazonaws.com/static/fe-assets/new/arrow-left.svg"
+                class="nnb-icon" (click)="location.back()">
+        </div>
+        <div class="header-title-md">종목 검색</div>
+        <div style="flex:1"></div>
+    </div>
+</ng-template>
+
+<div class="frame">
+    <div class="section-md" style="height: 100vh;padding:16px">
+        <div *ngFor="let corp of corps">
+            <div style="display: flex;justify-content: space-between;align-items: center;
+                cursor: pointer;padding:16px 0px" (click)="goToCorp(corp)">
+                <div style="display: flex;gap:8px;align-items: center;">
+                    <img [src]="corp.logo" style="width:32px;height:32px">
+                    <div style="font-size: 18px;">{{corp.name}}</div>
+                </div>
+                <div class="desc">{{corp.industry}}</div>
+            </div>
+            <hr style="margin:0px">
+        </div>
+        <div *ngIf="corps?.length === 0"
+            style="display: flex;gap:4px;align-items: center;padding:64px 0px;justify-content: center;">
+            <img src="/assets/warning.png" style="width:24px;height:24px">
+            <div>"{{term}}"에 해당하는 종목이 없습니다.</div>
+        </div>
+    </div>
+</div>

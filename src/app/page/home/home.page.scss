@@ -1,3 +1,5 @@
+@import 'src/foundation.scss';
+
 #summary::after {
     content: "|";
     right: 0;
@@ -24,4 +26,33 @@
     25% { clip-path: inset(0 66.6% 0 0); }
     50% { clip-path: inset(0 33.3% 0 0); }
     75% { clip-path: inset(0 0 0 0); }
+}
+
+.search-container{
+    display:flex;
+    gap:16px;
+    align-items: center;
+    padding: 16px;
+    background-color: #fff;
+    top: -1px;
+    position: sticky;
+    z-index: 900;
+
+    .search-input {
+        font-size: 16px;
+        line-height: 130%;
+        letter-spacing: 0;
+        font-weight: $regular;
+        height: 48px;
+        padding:16px;
+        border-radius: 12px;
+        width: 100%;
+        border:0 solid black;
+        background: url('https://nonunbub.s3.ap-northeast-2.amazonaws.com/static/fe-assets/new/search.svg') no-repeat scroll 16px $gray-100;
+        padding-left: 47px;
+    }
+    
+    .search-input:focus {
+        outline:none;
+    }
 }

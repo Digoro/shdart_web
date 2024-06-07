@@ -24,11 +24,15 @@ export class CorpService {
     return this.http.get<Corp>(`/api/corp/${corpCode}`);
   }
 
-  searchCorp(dto: CorpSearchDto): Observable<Pagination<Corp>> {
+  findCorp(term: string): Observable<Corp[]> {
+    return this.http.get<Corp[]>(`/api/find/corp?term=${term}`);
+  }
+
+  searchCorp(dto: CorpSearchDto): Observable<Corp[]> {
     const query = this.utilService.setQueryParams(dto);
-    return this.http.get<Pagination<Corp>>(`/api/search/corp?${query}`).pipe(
+    return this.http.get<Corp[]>(`/api/search/corp?${query}`).pipe(
       map(v => {
-        v.items = v.items.map(item => {
+        v = v.map(item => {
           item.finance = item.finances.filter(f => f.year == 202312)[0];
           return item;
         })

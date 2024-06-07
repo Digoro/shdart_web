@@ -7,10 +7,10 @@ table {
 
     thead {
         tr {
-            position: sticky;
-            top: 0;
-            z-index: 999;
-            background: white;
+            // position: sticky;
+            // top: 0;
+            // z-index: 999;
+            // background: white;
             height: 70px;
         }
     }
@@ -77,9 +77,4 @@ table {
     25% { clip-path: inset(0 66.6% 0 0); }
     50% { clip-path: inset(0 33.3% 0 0); }
     75% { clip-path: inset(0 0 0 0); }
-}
-
-.pen {
-    font-weight: bold;
-    background-color: #CAE2F6;
 }

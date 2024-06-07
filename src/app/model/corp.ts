@@ -1,4 +1,3 @@
-import { PaginationSearchDto } from "./pagination";
 
 export interface Corp {
     id: number;
@@ -39,7 +38,8 @@ export interface Finance {
     updatedAt: Date;
 }
 
-export interface CorpSearchDto extends PaginationSearchDto {
+export interface CorpSearchDto {
+    term?: string;
     revenuePerYearIncreaseRatio?: number;
     netProfitPerYearIncreaseRatio?: number;
     per?: number;

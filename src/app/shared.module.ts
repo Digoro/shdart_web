@@ -6,11 +6,13 @@ import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { RouterModule } from '@angular/router';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { HeaderComponent } from './component/header/header.component';
+import { SkeletonComponent } from './component/skeleton/skeleton.component';
 registerLocaleData(localeKo);
 
 @NgModule({
   declarations: [
-    HeaderComponent
+    HeaderComponent,
+    SkeletonComponent
   ],
   imports: [
     RouterModule,
@@ -27,7 +29,8 @@ registerLocaleData(localeKo);
     InfiniteScrollModule,
     CommonModule,
     HeaderComponent,
-    MatBottomSheetModule
+    MatBottomSheetModule,
+    SkeletonComponent
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'ko' }
