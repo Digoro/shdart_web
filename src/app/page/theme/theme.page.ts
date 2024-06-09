@@ -15,12 +15,29 @@ export class ThemePage implements OnInit {
   corps: Corp[];
   @ViewChild('th') th: ElementRef<any>;
   @ViewChild('thView') thView: ElementRef<any>;
+  @ViewChild('themeTitle') themeTitle: ElementRef<any>;
+  @ViewChild('themeTitleView') themeTitleView: ElementRef<any>;
+  columns = [
+    { key: 'name', name: '주식' },
+    { key: 'fullRevenue', name: '매출액' },
+    { key: 'operatingProfit', name: '영업이익' },
+    { key: 'netIncome', name: '당기순이익' },
+    { key: 'operatingProfitMargin', name: '영업이익률' },
+    { key: 'netProfitMargin', name: '순이익률' },
+    { key: 'roe', name: 'ROE' },
+    { key: 'eps', name: 'EPS' },
+    { key: 'per', name: 'PER' },
+    { key: 'bps', name: 'BPS' },
+    { key: 'pbr', name: 'PBR' },
+    { key: 'dividendPerShare', name: '주당배당금' },
+  ]
   observer: IntersectionObserver;
   theme: any;
 
   selectedQuestion: string;
   selectedCorp: Corp;
   standards: { key: string, value: number }[];
+  order = { key: 'fullRevenue', isAsc: false };
 
   constructor(
     private corpService: CorpService,
@@ -54,6 +71,16 @@ export class ThemePage implements OnInit {
           this.th.nativeElement.style.whiteSpace = 'wrap';
         }
       });
+      const headerObserver = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+          this.themeTitle.nativeElement.style.opacity = '0';
+        } else {
+          this.themeTitle.nativeElement.style.opacity = '1';
+        }
+      });
+      setTimeout(() => {
+        headerObserver.observe(this.themeTitleView.nativeElement);
+      })
       this.setCorps();
     })
   }
@@ -61,7 +88,7 @@ export class ThemePage implements OnInit {
   setCorps() {
     const dto = this.getSearchDto(this.theme.name);
     this.corpService.searchCorp(dto).subscribe(resp => {
-      this.corps = resp;
+      this.corps = resp.sort((a, b) => b.finance.fullRevenue - a.finance.fullRevenue)
       setTimeout(() => {
         this.observer.observe(this.thView.nativeElement);
       });
@@ -74,7 +101,7 @@ export class ThemePage implements OnInit {
       searchDto = {
         revenuePerYearIncreaseRatio: 10,
         netProfitPerYearIncreaseRatio: 20,
-        per: 20
+        per: 10
       }
     } else if (theme === '성장 기대주') {
       searchDto = {
@@ -124,5 +151,19 @@ export class ThemePage implements OnInit {
 
   goToCorp(corp: Corp) {
     this.router.navigate(['/corp', corp.code])
+  }
+
+  sort(standard: string) {
+    this.order.isAsc = !this.order.isAsc;
+    this.order.key = standard;
+    if (standard == 'name') {
+      this.corps = this.corps.sort((a, b) => this.order.isAsc ? a.name > b.name ? 1 : -1 : a.name > b.name ? -1 : 1);
+    } else {
+      if (this.order.key === standard) {
+        this.corps = this.corps.sort((a, b) => this.order.isAsc ? a.finance[standard] - b.finance[standard] : b.finance[standard] - a.finance[standard])
+      } else {
+        this.corps = this.corps.sort((a, b) => b.finance[standard] - a.finance[standard])
+      }
+    }
   }
 }

@@ -8,25 +8,26 @@ table {
     thead {
         tr {
             position: sticky;
-            top: 0;
-            z-index: 999;
+            top: 64px;
+            z-index: 900;
             background: white;
             height: 70px;
         }
     }
     
     th {
-        padding: 0px 16px 0px 0px;
+        padding: 0px 0px 0px 16px;
         font-size: 14px;
         color: #6A7684;
         font-weight: 400;
         text-align: right;
         white-space: nowrap;
         border-bottom: 1px solid #d8dbdd;
+        cursor: pointer;
     }
 
     td { 
-        padding: 0px 16px 0px 0px;
+        padding: 0px 0px 0px 16px;
         text-align: right;
         border-bottom: 1px solid #EAECEE;
         height: 74px;
@@ -38,14 +39,14 @@ table {
 }
 
 .myTdIn {
-    min-width: 140px;
-    max-width: 140px;
+    min-width: 140px !important;
+    max-width: 140px !important;
     white-space: wrap;
 }
 
 .myTdOut {
-    min-width: 120px;
-    max-width: 120px;
+    min-width: 120px !important;
+    max-width: 120px !important;
     white-space: wrap;
     border-right: 1px solid #EAECEE;
     box-shadow: 8px 0px 10px -2px #F4F5F6
