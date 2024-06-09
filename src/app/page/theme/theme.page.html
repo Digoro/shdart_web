@@ -109,10 +109,11 @@
             <tr>
                 <ng-container *ngFor="let column of columns">
                     <ng-container *ngIf="column.key == 'name'">
-                        <th (click)="sort('name')" #th style="text-align: left;position: sticky; left: 0;background:
+                        <th #th style="text-align: left;position: sticky; left: 0;background:
             white;z-index:1;padding:0px 0px 0px 16px">
                             <div style="display: flex;gap:4px;align-items: center;">
-                                <div style="display:flex;gap:1px;align-items: center;justify-content: flex-end;">
+                                <div style="display:flex;gap:1px;align-items: center;justify-content: flex-end;"
+                                    (click)="sort('name')">
                                     <div [ngStyle]="{color: order.key === 'name' ? '#329AF0': '#6A7684'}">주식</div>
                                     <div *ngIf="order.key === 'name'">
                                         <img *ngIf="order.isAsc" src="/assets/arrow-up-blue.png"
@@ -141,8 +142,9 @@
                     </ng-container>
                     <ng-container *ngIf="column.key != 'name' && column.key != 'fullRevenue'">
                         <th (click)="sort(column.key)"
-                            [ngStyle]="{padding: column.key == 'dividendPerShare' ? ' 0px 16px 0px 16px':'0px 0px 0px 16px;'}">
-                            <div style="display:flex;gap:1px;align-items: center;justify-content: flex-end;">
+                            [ngStyle]="{'padding-right': column.key == 'dividendPerShare' ? '16px':'0px'}">
+                            <div style="display:flex;gap:1px;align-items: center;justify-content: flex-end;"
+                                [ngStyle]="{'flex-wrap': column.key == 'dividendPerShare' ? 'wrap':''}">
                                 <div [ngStyle]="{color: order.key === column.key ?
                                  '#329AF0': '#6A7684'}">{{column.name}}</div>
                                 <div *ngIf="order.key === column.key">
@@ -161,10 +163,10 @@
             <tr *ngFor="let corp of corps">
                 <td class="myTd" style="text-align: left;position: sticky; left: 0;background: white;
                 padding: 0px 16px 0px 16px;min-width: 140px;">
-                    <div style="display:flex;gap:4px;align-items: center;" (click)="goToCorp(corp)">
+                    <div style="display:flex;gap:4px;align-items: center;cursor: pointer;" (click)="goToCorp(corp)">
                         <img [src]="corp.logo" style="width:24px;height:24px"
                             onerror="this.onerror=null; this.src='/assets/black-ball.png';">
-                        <div style="cursor: pointer;">{{corp?.name}}</div>
+                        <div>{{corp?.name}}</div>
                     </div>
                 </td>
                 <td class="otherTd">{{corp?.finance?.fullRevenue |
@@ -184,6 +186,14 @@
                 <td class="otherTd">{{corp?.finance?.per| number}}{{corp?.finance?.per?'배':''}}</td>
                 <td class="otherTd">{{corp?.finance?.bps| number}}{{corp?.finance?.bps?'원':''}}</td>
                 <td class="otherTd">{{corp?.finance?.pbr| number}}{{corp?.finance?.pbr?'배':''}}</td>
+                <td class="otherTd">{{corp?.finance?.revenuePerYearIncreaseRatio|
+                    number}}{{corp?.finance?.revenuePerYearIncreaseRatio?'%':''}}</td>
+                <td class="otherTd">{{corp?.finance?.netProfitPerYearIncreaseRatio|
+                    number}}{{corp?.finance?.netProfitPerYearIncreaseRatio?'%':''}}</td>
+                <td class="otherTd">{{corp?.finance?.operatingProfitIncreaseRatio|
+                    number}}{{corp?.finance?.operatingProfitIncreaseRatio?'%':''}}</td>
+                <td class="otherTd">{{corp?.finance?.netProfitIncreaseRatio|
+                    number}}{{corp?.finance?.netProfitIncreaseRatio?'%':''}}</td>
                 <td class="otherTd" style="padding: 0px 16px 0px 16px">{{corp?.finance?.dividendPerShare|
                     number}}{{corp?.finance?.dividendPerShare?'원':''}}
                 </td>

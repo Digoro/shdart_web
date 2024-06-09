@@ -15,7 +15,8 @@
     <div class="section-md" style="padding-top: 8px;">
         <ng-container *ngIf="corp">
             <div style="margin-bottom:24px;display: flex;gap:8px;align-items: center;">
-                <img [src]="corp.logo" style="width:32px;height:32px">
+                <img [src]="corp.logo" style="width:32px;height:32px"
+                    onerror="this.onerror=null; this.src='/assets/black-ball.png';">
                 <div style="font-size: 22px;font-weight: 600;">{{corp.name}}</div>
             </div>
             <div style="background: rgb(185, 218, 247);padding: 24px;border-radius: 24px;margin-top: 16px;">
@@ -42,12 +43,18 @@
                         <th>PER</th>
                         <th>BPS</th>
                         <th>PBR</th>
+                        <th>연평균 매출액 증감률</th>
+                        <th>연평균 순이익 증감률</th>
+                        <th>영업이익 증감률</th>
+                        <th>순이익 증감률</th>
                         <th>주당배당금</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let finance of corp?.finances">
-                        <td class="otherTd">{{finance?.year}}</td>
+                        <td class="otherTd">{{finance?.year}}<br>
+                            <span *ngIf="finance?.year == 202412">(E)</span>
+                        </td>
                         <td class="otherTd">{{finance?.fullRevenue |number}}{{finance?.fullRevenue?'억원':''}}</td>
                         <td class="otherTd">{{finance?.operatingProfit|number}}{{finance?.operatingProfit?'억원':''}}</td>
                         <td class="otherTd">{{finance?.netIncome| number}}{{finance?.netIncome?'억원':''}}</td>
@@ -59,6 +66,17 @@
                         <td class="otherTd">{{finance?.per| number}}{{finance?.per?'배':''}}</td>
                         <td class="otherTd">{{finance?.bps| number}}{{finance?.bps?'원':''}}</td>
                         <td class="otherTd">{{finance?.pbr| number}}{{finance?.pbr?'배':''}}</td>
+                        <td class="otherTd">
+                            {{finance?.revenuePerYearIncreaseRatio|number}}{{finance?.revenuePerYearIncreaseRatio?'%':''}}
+                        </td>
+                        <td class="otherTd">
+                            {{finance?.netProfitPerYearIncreaseRatio|number}}{{finance?.netProfitPerYearIncreaseRatio?'%':''}}
+                        </td>
+                        <td class="otherTd">
+                            {{finance?.operatingProfitIncreaseRatio|number}}{{finance?.operatingProfitIncreaseRatio?'%':''}}
+                        </td>
+                        <td class="otherTd">
+                            {{finance?.netProfitIncreaseRatio|number}}{{finance?.netProfitIncreaseRatio?'%':''}}</td>
                         <td class="otherTd">{{finance?.dividendPerShare|number}}{{finance?.dividendPerShare?'원':''}}
                         </td>
                     </tr>

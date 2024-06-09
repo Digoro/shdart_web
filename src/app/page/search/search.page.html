@@ -17,7 +17,8 @@
             <div style="display: flex;justify-content: space-between;align-items: center;
                 cursor: pointer;padding:16px 0px" (click)="goToCorp(corp)">
                 <div style="display: flex;gap:8px;align-items: center;">
-                    <img [src]="corp.logo" style="width:32px;height:32px">
+                    <img [src]="corp.logo" style="width:32px;height:32px"
+                        onerror="this.onerror=null; this.src='/assets/black-ball.png';">
                     <div style="font-size: 18px;">{{corp.name}}</div>
                 </div>
                 <div class="desc">{{corp.industry}}</div>

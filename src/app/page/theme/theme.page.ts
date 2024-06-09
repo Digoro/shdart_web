@@ -29,6 +29,10 @@ export class ThemePage implements OnInit {
     { key: 'per', name: 'PER' },
     { key: 'bps', name: 'BPS' },
     { key: 'pbr', name: 'PBR' },
+    { key: 'revenuePerYearIncreaseRatio', name: '연평균 매출액 증감률' },
+    { key: 'netProfitPerYearIncreaseRatio', name: '연평균 순이익 증감률' },
+    { key: 'operatingProfitIncreaseRatio', name: '영업이익 증감률' },
+    { key: 'netProfitIncreaseRatio', name: '순이익 증감률' },
     { key: 'dividendPerShare', name: '주당배당금' },
   ]
   observer: IntersectionObserver;
