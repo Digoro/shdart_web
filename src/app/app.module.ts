@@ -1,5 +1,5 @@
 import { registerLocaleData } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import localeKo from '@angular/common/locales/ko';
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -15,25 +15,24 @@ import { SharedModule } from './shared.module';
 registerLocaleData(localeKo);
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    SharedModule,
-    HttpClientModule,
-    AppRoutingModule,
-    LoadingBarHttpClientModule,
-    LoadingBarRouterModule,
-    LoadingBarModule,
-    HomePageModule,
-  ],
-  providers: [
-    { provide: LOCALE_ID, useValue: 'ko' },
-    RouterConfiguration,
-    { provide: ROUTER_CONFIGURATION, useExisting: RouterConfiguration }
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent
+    ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        SharedModule,
+        AppRoutingModule,
+        LoadingBarHttpClientModule,
+        LoadingBarRouterModule,
+        LoadingBarModule,
+        HomePageModule],
+    providers: [
+        { provide: LOCALE_ID, useValue: 'ko' },
+        RouterConfiguration,
+        { provide: ROUTER_CONFIGURATION, useExisting: RouterConfiguration },
+        provideHttpClient(withInterceptorsFromDi())
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
