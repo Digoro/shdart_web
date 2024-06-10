@@ -85,10 +85,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "sh-dart_web:build:production"
+              "buildTarget": "sh-dart_web:build:production"
             },
             "development": {
-              "browserTarget": "sh-dart_web:build:development"
+              "buildTarget": "sh-dart_web:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -96,7 +96,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "sh-dart_web:build"
+            "buildTarget": "sh-dart_web:build"
           }
         },
         "test": {
