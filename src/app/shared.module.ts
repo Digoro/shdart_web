@@ -4,7 +4,6 @@ import { LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { RouterModule } from '@angular/router';
-import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { HeaderComponent } from './component/header/header.component';
 import { SkeletonComponent } from './component/skeleton/skeleton.component';
 registerLocaleData(localeKo);
@@ -18,7 +17,6 @@ registerLocaleData(localeKo);
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    InfiniteScrollModule,
     CommonModule,
     MatBottomSheetModule
   ],
@@ -26,7 +24,6 @@ registerLocaleData(localeKo);
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    InfiniteScrollModule,
     CommonModule,
     HeaderComponent,
     MatBottomSheetModule,

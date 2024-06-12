@@ -8,11 +8,14 @@ import { ROUTER_CONFIGURATION } from '@angular/router';
 import { LoadingBarModule } from '@ngx-loading-bar/core';
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
+import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
+import { environment } from 'src/environments/environment';
 import { AppRoutingModule, RouterConfiguration } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomePageModule } from './page/home/home.module';
 import { SharedModule } from './shared.module';
 registerLocaleData(localeKo);
+const config: SocketIoConfig = { url: `${environment.host}/shWebsocket`, options: {} };
 
 @NgModule({
     declarations: [
@@ -21,12 +24,14 @@ registerLocaleData(localeKo);
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
+        SocketIoModule.forRoot(config),
         SharedModule,
         AppRoutingModule,
         LoadingBarHttpClientModule,
         LoadingBarRouterModule,
         LoadingBarModule,
-        HomePageModule],
+        HomePageModule
+    ],
     providers: [
         { provide: LOCALE_ID, useValue: 'ko' },
         RouterConfiguration,

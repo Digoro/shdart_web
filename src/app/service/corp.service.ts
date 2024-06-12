@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Socket } from 'ngx-socket-io';
 import { Observable, map } from 'rxjs';
 import { Corp, CorpSearchDto } from '../model/corp';
 import { Pagination } from '../model/pagination';
@@ -12,7 +13,8 @@ export class CorpService {
 
   constructor(
     private http: HttpClient,
-    private utilService: UtilService
+    private utilService: UtilService,
+    private socket: Socket
   ) { }
 
   searchFinance(dto: any): Observable<Pagination<Corp>> {
@@ -41,11 +43,19 @@ export class CorpService {
     );
   }
 
-  summaryCorp(corpName: string): Observable<{ response: string }> {
-    return this.http.get<{ response: string }>(`api/summary/corp?corpName=${corpName}`);
+  getSummaryMarket() {
+    return this.socket.fromEvent('emitSummaryMarket');
   }
 
-  summaryMarket(): Observable<{ response: string }> {
-    return this.http.get<{ response: string }>(`api/summary/market`);
+  emitSummaryMarket() {
+    return this.socket.emit('getSummaryMarket')
+  }
+
+  getSummaryCorp() {
+    return this.socket.fromEvent('emitSummaryCorp');
+  }
+
+  emitSummaryCorp(corpName: string) {
+    return this.socket.emit('getSummaryCorp', { corpName })
   }
 }

@@ -12,7 +12,7 @@ declare var TypeHangul;
 })
 export class CorpPage implements OnInit {
   corp: Corp;
-  summary: string;
+  summary = '';
 
   constructor(
     private corpService: CorpService,
@@ -25,14 +25,10 @@ export class CorpPage implements OnInit {
       this.corpService.getCorp(params.code).subscribe(corp => {
         this.corp = corp;
         this.corp.finances = corp.finances.reverse();
-        this.corpService.summaryCorp(corp.name).subscribe(resp => {
-          this.summary = resp.response;
-          setTimeout(() => {
-            TypeHangul.type('#summary', {
-              intervalType: 1
-            });
-          })
-        })
+        this.corpService.getSummaryCorp().subscribe(resp => {
+          this.summary += resp;
+        });
+        this.corpService.emitSummaryCorp(this.corp.name);
       })
     })
   }

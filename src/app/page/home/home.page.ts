@@ -23,7 +23,7 @@ export class HomePage implements OnInit {
       { name: '성장 기대주', desc: '빠른 이익 성장', color: '#F3CEE2', img: 'cap' }
     ]
   ];
-  summary: string;
+  summary = '';
   term: string;
 
   constructor(
@@ -32,14 +32,10 @@ export class HomePage implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.corpService.summaryMarket().subscribe(resp => {
-      this.summary = resp.response;
-      setTimeout(() => {
-        TypeHangul.type('#summary', {
-          intervalType: 1
-        });
-      })
+    this.corpService.getSummaryMarket().subscribe(resp => {
+      this.summary += resp;
     })
+    this.corpService.emitSummaryMarket();
   }
 
   search() {
