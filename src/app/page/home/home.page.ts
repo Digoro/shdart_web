@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CorpService } from 'src/app/service/corp.service';
-declare var TypeHangul;
 
 @Component({
   selector: 'home',
@@ -25,6 +24,7 @@ export class HomePage implements OnInit {
   ];
   summary = '';
   term: string;
+  isMore = false;
 
   constructor(
     private router: Router,

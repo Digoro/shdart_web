@@ -26,6 +26,9 @@ export interface Finance {
     per: number;
     bps: number;
     pbr: number;
+    debtToEquityRatio: number;
+    quickRatio: number;
+    reserveRatio: number;
     dividendPerShare: number;
     revenuePerYearIncreaseRatio: number;
     netProfitPerYearIncreaseRatio: number;

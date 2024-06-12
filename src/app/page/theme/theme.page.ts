@@ -4,7 +4,6 @@ import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Corp, CorpSearchDto } from 'src/app/model/corp';
 import { CorpService } from 'src/app/service/corp.service';
-declare var TypeHangul;
 
 @Component({
   selector: 'theme',
@@ -29,6 +28,9 @@ export class ThemePage implements OnInit {
     { key: 'per', name: 'PER' },
     { key: 'bps', name: 'BPS' },
     { key: 'pbr', name: 'PBR' },
+    { key: 'debtToEquityRatio', name: '부채비율' },
+    { key: 'quickRatio', name: '당좌비율' },
+    { key: 'reserveRatio', name: '유보율' },
     { key: 'revenuePerYearIncreaseRatio', name: '연평균 매출액 증감률' },
     { key: 'netProfitPerYearIncreaseRatio', name: '연평균 순이익 증감률' },
     { key: 'operatingProfitIncreaseRatio', name: '영업이익 증감률' },

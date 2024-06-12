@@ -9,7 +9,12 @@
         <div style="background: rgb(185, 218, 247);padding: 24px;border-radius: 24px;margin-top: 16px;">
             <div style="font-size: 14px;font-weight: 600;margin-bottom:4px">Stock AI 요약</div>
             <div *ngIf="!summary" class="desc loading-ellipsis" style="margin-bottom:32px">요약 중입니다</div>
-            <div *ngIf="summary" id="summary">{{summary}}</div>
+            <div class="line-clamp-3" *ngIf="summary && !isMore">{{summary}}</div>
+            <markdown *ngIf="summary && isMore" [data]="summary"></markdown>
+            <button *ngIf="summary && !isMore" class="nnb-btn nnb-btn-sm nnb-btn-outline" style="margin-top: 8px;"
+                (click)="isMore = !isMore">더보기</button>
+            <button *ngIf="summary && isMore" class="nnb-btn nnb-btn-sm nnb-btn-outline"
+                (click)="isMore = !isMore">접기</button>
         </div>
     </div>
     <div class="section-md">
@@ -30,12 +35,4 @@
             </div>
         </div>
     </div>
-    <!-- <div class="section-md">
-        <div class="section-title">전체 보기</div>
-        <div>준비 중입니다..</div>
-    </div>
-    <div class="section-md">
-        <div class="section-title">한 눈에 보기</div>
-        <div>준비 중입니다..</div>
-    </div> -->
 </div>
