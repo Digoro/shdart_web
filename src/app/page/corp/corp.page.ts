@@ -13,6 +13,7 @@ declare var TypeHangul;
 export class CorpPage implements OnInit {
   corp: Corp;
   summary = '';
+  isMore = false;
 
   constructor(
     private corpService: CorpService,

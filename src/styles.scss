@@ -346,46 +346,46 @@ owl-date-time-inline  {
     }
 }
 
-.nnb-bottom-sheet {
-    padding: 42px 24px 24px 24px !important;
+.nnb-bottom-sheet .mat-bottom-sheet-container{
+    padding: 32px 24px 24px 24px !important;
     border-radius: 24px 24px 0px 0px !important;
     font-size: 16px !important;
     line-height: 24px !important;
 }
 
-.nnb-bottom-sheet-8-padding {
+.nnb-bottom-sheet-8-padding .mat-bottom-sheet-container{
     padding: 8px !important;
     border-radius: 24px 24px 0px 0px !important;
     font-size: 16px !important;
     line-height: 24px !important;
 }
 
-.nnb-bottom-sheet-no-padding {
+.nnb-bottom-sheet-no-padding .mat-bottom-sheet-container{
     padding: 0px !important;
     border-radius: 24px 24px 0px 0px !important;
     font-size: 16px !important;
     line-height: 24px !important;
 }
 
-.nnb-bottom-sheet-fullscreen {
+.nnb-bottom-sheet-fullscreen .mat-bottom-sheet-container{
     padding: 0px !important;
     min-height: 100vh !important;
     max-height: 100vh !important;
 }
 
-.nnb-bottom-sheet-payment {
+.nnb-bottom-sheet-payment .mat-bottom-sheet-container{
     padding: 0px !important;
     font-size: 16px !important;
     line-height: 24px !important;
 }
 
-.nnb-bottom-sheet-opacity-0 {
+.nnb-bottom-sheet-opacity-0 .mat-bottom-sheet-container{
     background: rgba(0, 0, 255, 0);
     box-shadow: none;
     padding: 0px !important;
 }
 
-.nnb-bottom-sheet-bullet {
+.nnb-bottom-sheet-bullet .mat-bottom-sheet-container{
     .swiper-pagination {
         display: flex;
         justify-content: center;
