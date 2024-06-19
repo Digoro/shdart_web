@@ -1,0 +1,50 @@
+@import 'src/foundation.scss';
+
+.footer-input {
+    bottom: 0;
+    z-index: 900;
+    position: sticky;
+    padding: 16px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+
+    .wrapper {
+        position: relative;
+        width: 100%;
+
+        .input {
+            border: none;
+            background: #F4F4F4;
+            border-radius: 32px;
+            overflow-y: scroll;
+            width: 100%;
+            min-height: 54px;
+            resize: none;
+            padding: 16px 52px 16px 16px;
+            text-decoration: none;
+            box-shadow: none;
+            outline: none;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .input::placeholder {
+            // padding-left: 4px;
+        }
+
+        .button {
+            position: absolute;
+            right: 12px;
+            top: 10px;
+            background: none;
+        }
+    }
+
+
+    .textarea::placeholder {
+        padding-left: 0px;
+    }
+}

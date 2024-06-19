@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Socket } from 'ngx-socket-io';
 import { Observable, map } from 'rxjs';
+import { Message } from '../model/chat';
 import { Corp, CorpSearchDto } from '../model/corp';
 import { Pagination } from '../model/pagination';
 import { UtilService } from './util.service';
@@ -57,5 +58,9 @@ export class CorpService {
 
   emitSummaryCorp(corpName: string) {
     return this.socket.emit('getSummaryCorp', { corpName })
+  }
+
+  getAnswerMessage(messageList: Message[]): Observable<{ answer: string }> {
+    return this.http.post<{ answer: string }>(`api/chat`, { messageList })
   }
 }

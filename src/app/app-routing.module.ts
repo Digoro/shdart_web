@@ -6,6 +6,7 @@ const routes: Routes = [
   { path: 'search/:term', children: [{ path: '', loadChildren: () => import('./page/search/search.module').then(m => m.SearchPageModule) }] },
   { path: 'theme', children: [{ path: '', loadChildren: () => import('./page/theme/theme.module').then(m => m.ThemePageModule) }] },
   { path: 'corp/:code', children: [{ path: '', loadChildren: () => import('./page/corp/corp.module').then(m => m.CorpPageModule) }] },
+  { path: 'chat', children: [{ path: '', loadChildren: () => import('./page/chat/chat.module').then(m => m.ChatPageModule) }] },
   { path: '**', redirectTo: '/', pathMatch: 'full' }
 ];
 

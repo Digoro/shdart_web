@@ -47,4 +47,8 @@ export class HomePage implements OnInit {
       queryParams: this.cards.flat().filter(v => v.name == name)[0]
     });
   }
+
+  goToChat() {
+    this.router.navigate(['/chat'])
+  }
 }
