@@ -25,6 +25,7 @@ export class HomePage implements OnInit {
   summary = '';
   term: string;
   isMore = false;
+  question = '';
 
   constructor(
     private router: Router,
@@ -50,5 +51,14 @@ export class HomePage implements OnInit {
 
   goToChat() {
     this.router.navigate(['/chat'])
+  }
+
+  goToSection(section: string) {
+    setTimeout(() => {
+      const yOffset = -92;
+      const element = document.getElementById(section);
+      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    });
   }
 }

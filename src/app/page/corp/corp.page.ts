@@ -1,7 +1,7 @@
 
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { Corp } from 'src/app/model/corp';
 import { CorpService } from 'src/app/service/corp.service';
@@ -20,7 +20,8 @@ export class CorpPage implements OnInit {
     private corpService: CorpService,
     public location: Location,
     private route: ActivatedRoute,
-    private deviceService: DeviceDetectorService
+    private deviceService: DeviceDetectorService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -51,5 +52,9 @@ export class CorpPage implements OnInit {
       url = 'https://play.google.com/store/apps/details?id=com.shinhaninvest.nsmts&hl=ko';
     }
     window.open(url, '_blank');
+  }
+
+  goToHome() {
+    this.router.navigate(['/'])
   }
 }

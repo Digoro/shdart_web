@@ -29,10 +29,7 @@
 }
 
 .search-container{
-    display:flex;
-    gap:16px;
-    align-items: center;
-    padding: 16px;
+    padding: 16px 16px 8px 16px;
     background-color: #fff;
     top: -1px;
     position: sticky;
@@ -54,6 +51,14 @@
     
     .search-input:focus {
         outline:none;
+    }
+
+    .tap-menu {
+        background: #bdbdbd;
+        border-radius: 24px;
+        padding: 4px 8px;
+        color: white;
+        cursor: pointer;
     }
 }
 

@@ -7,35 +7,47 @@
                 class="nnb-icon" (click)="location.back()">
         </div>
         <div class="header-title-md">무엇이든 물어보세요</div>
-        <div style="flex:1"></div>
+        <div style="flex:1;text-align: right;">
+            <img src="/assets/home.png" style="width:24px;height:24px;cursor: pointer;" (click)="goToHome()">
+        </div>
     </div>
 </ng-template>
 
 <div class="frame">
-    <div class="section-md" style="padding-top: 8px; height: 100%;min-height: calc(100vh - 172px);">
+    <div class="section-md" style="padding-top: 8px;">
         <div style="padding:16px;">
             <div style="display: flex;gap:4px;align-items: center;margin-bottom:8px">
                 <img src="/assets/infinity.png" style="width:32px;height: 32px;">
-                <div style="font-size: 16px;font-weight: 600;">주식 AI 어시스턴트</div>
+                <div style="font-size: 16px;font-weight: 600;">Stock AI</div>
             </div>
             <markdown [data]="welcomeText"></markdown>
         </div>
         <ng-container *ngFor="let message of chatViewList">
             <div *ngIf="message.role == 'user'"
-                style="display:flex;justify-content: flex-end;min-width: 32px;margin-bottom: 4px;">
+                style="display:flex;justify-content: flex-end;min-width: 32px;margin-bottom: 4px;margin-top:8px">
                 <div style="padding:16px;background: #F4F4F4;border-radius: 24px;">
                     {{message.parts[0].text}}
+                </div>
+            </div>
+            <div *ngIf="message.role == 'error'" style="display:flex;flex-direction: column;justify-content: flex-end;
+                min-width: 32px;margin-bottom: 8px;align-items: flex-end;margin-top:8px">
+                <div style="padding:16px;background: #F4F4F4;border-radius: 24px;">
+                    {{message.parts[0].text}}
+                </div>
+                <div style="margin-right: 6px;">
+                    <img (click)="sendMessage(message.parts[0].text)" style="cursor: pointer; width:16px;height:16px"
+                        src="/assets/reload.png">
                 </div>
             </div>
             <div *ngIf="message.role == 'model'" style="padding:16px;">
                 <div style="display: flex;gap:4px;align-items: center;margin-bottom:8px">
                     <img src="/assets/infinity.png" style="width:32px;height: 32px;">
-                    <div style="font-size: 16px;font-weight: 600;">주식 AI 어시스턴트</div>
+                    <div style="font-size: 16px;font-weight: 600;">Stock AI</div>
                 </div>
                 <markdown [data]="message.parts[0].text"></markdown>
             </div>
             <div *ngIf="message.role == 'question'" style="display:flex;justify-content: flex-end;min-width: 32px;margin-bottom: 4px;
-            flex-direction: column;gap: 4px;">
+            flex-direction: column;gap: 4px;cursor: pointer;">
                 <div *ngFor="let question of message.parts[0].text" (click)="sendMessage(question)"
                     style="padding:16px;border-radius: 24px;background: #007bff;color:white">
                     {{question}}
@@ -50,7 +62,7 @@
     <div class="footer-input" id="footer">
         <div class="wrapper">
             <textarea class="input" id="myTextarea" #textarea [rows]="1" [(ngModel)]="search"
-                placeholder="주식 AI 어시스턴트에게 질문하기"></textarea>
+                placeholder="Stock AI에게 질문하기"></textarea>
             <button class="button" style="text-wrap: nowrap;" (click)="sendMessage()">
                 <img src="/assets/arrow-up-circle.png" style="width: 32px;height: 32px;">
             </button>

@@ -9,7 +9,9 @@
                 </div>
                 <div *ngIf="theme" class="header-title-md" style="transition: all 0.1s;opacity: 0;" #themeTitle>
                     {{theme.name}}</div>
-                <div style="flex:1"></div>
+                <div style="flex:1;text-align: right;">
+                    <img src="/assets/home.png" style="width:24px;height:24px;cursor: pointer;" (click)="goToHome()">
+                </div>
             </div>
         </ng-template>
     </div>
@@ -166,7 +168,7 @@
                     <div style="display:flex;gap:4px;align-items: center;cursor: pointer;" (click)="goToCorp(corp)">
                         <img [src]="corp.logo" style="width:24px;height:24px"
                             onerror="this.onerror=null; this.src='/assets/black-ball.png';">
-                        <div>{{corp?.name}}</div>
+                        <div style="text-decoration: underline;color:#329AF0">{{corp?.name}}</div>
                     </div>
                 </td>
                 <td class="otherTd">{{corp?.finance?.fullRevenue |
@@ -322,7 +324,7 @@
 </ng-template>
 
 <ng-template #corpDescTpl>
-    <div style="font-size: 22px;font-weight: 600;margin-bottom:24px">주식 AI 어시스턴트</div>
-    <div>각 주식 종목을 클릭하면 주식 AI 어시스턴트의 분석 정보와 연도 별 주요 재무 정보를 확인하실 수 있습니다.</div>
+    <div style="font-size: 22px;font-weight: 600;margin-bottom:24px">Stock AI</div>
+    <div>각 주식 종목을 클릭하면 Stock AI의 분석 정보와 연도 별 주요 재무 정보를 확인하실 수 있습니다.</div>
     <button class="nnb-btn-md nnb-btn-block nnb-btn-secondary" style="margin-top: 16px;" (click)="closeBm()">확인</button>
 </ng-template>

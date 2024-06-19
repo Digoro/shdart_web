@@ -172,4 +172,8 @@ export class ThemePage implements OnInit {
       }
     }
   }
+
+  goToHome() {
+    this.router.navigate(['/'])
+  }
 }
