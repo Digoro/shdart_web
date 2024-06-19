@@ -1,7 +1,7 @@
 
 export class Message {
     constructor(
-        public role: 'model' | 'user',
+        public role: 'model' | 'user' | 'question',
         public parts: { text: string }[]
     ) { }
 }

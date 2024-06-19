@@ -34,6 +34,13 @@
                 </div>
                 <markdown [data]="message.parts[0].text"></markdown>
             </div>
+            <div *ngIf="message.role == 'question'" style="display:flex;justify-content: flex-end;min-width: 32px;margin-bottom: 4px;
+            flex-direction: column;gap: 4px;">
+                <div *ngFor="let question of message.parts[0].text" (click)="sendMessage(question)"
+                    style="padding:16px;border-radius: 24px;background: #007bff;color:white">
+                    {{question}}
+                </div>
+            </div>
         </ng-container>
         <div *ngIf="isLoading">
             <img src="/assets/loading.gif" style="padding: 16px;width:72px">

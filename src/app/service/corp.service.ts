@@ -63,4 +63,8 @@ export class CorpService {
   getAnswerMessage(messageList: Message[]): Observable<{ answer: string }> {
     return this.http.post<{ answer: string }>(`api/chat`, { messageList })
   }
+
+  getRelationQuestions(messageList: Message[]): Observable<{ answer: string }> {
+    return this.http.post<{ answer: string }>(`api/chat/relation_questions`, { messageList })
+  }
 }

@@ -37,7 +37,8 @@ export class ChatPage implements OnInit {
     });
   }
 
-  sendMessage() {
+  sendMessage(question?: string) {
+    if (question) this.search = question;
     if (!this.search) return;
     if (this.search.trim() === '') return;
     if (this.search.length > 65535) {
@@ -48,10 +49,18 @@ export class ChatPage implements OnInit {
     this.scrollToBottom();
     this.chatList.push(new Message("user", [{ text: this.search }]));
     this.chatViewList.push(new Message("user", [{ text: this.search }]));
-    this.corpService.getAnswerMessage(this.chatViewList).subscribe(resp => {
+    this.corpService.getAnswerMessage(this.chatList).subscribe(resp => {
       this.chatList.push(new Message("model", [{ text: resp.answer }]));
       this.chatViewList.push(new Message("model", [{ text: resp.answer }]));
       this.isLoading = false;
+      this.corpService.getRelationQuestions(this.chatList).subscribe(resp => {
+        try {
+          const question = JSON.parse(resp.answer);
+          this.chatViewList.push(new Message("question", [{ text: question }]));
+        } catch (e) {
+          console.log('relation question format invalid')
+        }
+      });
     }, error => {
       alert('죄송합니다. 일시적인 오류가 발생했습니다. 다시 질문해주세요.');
       this.isLoading = false;
