@@ -111,7 +111,7 @@
         </div>
     </div>
 
-    <div class="section-md">
+    <div class="section-md" *ngIf="stockPrices?.length > 0">
         <div class="section-title">일별주가</div>
         <div style="overflow: auto;">
             <table>
