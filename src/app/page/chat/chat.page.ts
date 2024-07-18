@@ -17,6 +17,7 @@ export class ChatPage implements OnInit {
   search: string;
   isLoading = false;
   welcomeText = '안녕하세요! Stock AI에 오신 것을 환영합니다. 주식 투자와 관련된 모든 질문에 도움을 드리겠습니다. 무엇을 도와드릴까요?';
+  welComeQuestions = [];
 
   constructor(
     private corpService: CorpService,
@@ -25,6 +26,18 @@ export class ChatPage implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.corpService.getWelcomeQuestions().subscribe(resp => {
+      try {
+        if (resp.answer.startsWith("```json\n") && resp.answer.endsWith("\n```")) {
+          const trimmedResponse = resp.answer.slice(8, -4);
+          this.welComeQuestions = JSON.parse(trimmedResponse);
+        } else {
+          this.welComeQuestions = JSON.parse(resp.answer);
+        }
+      } catch (e) {
+        console.log('relation question format invalid')
+      }
+    })
     const textarea = document.getElementById('myTextarea');
     textarea.addEventListener('input', function () {
       this.style.height = 'auto';

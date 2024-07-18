@@ -54,3 +54,22 @@ export interface CorpSearchDto {
     pbr?: number;
     continuousincreaseDividends?: number;
 }
+
+export interface StockPrice {
+    id: number;
+    createdAt: Date;
+    updatedAt: Date;
+    corp: Corp;
+    date: Date;
+    open: number;
+    high: number;
+    low: number;
+    close: number;
+    volume: number;
+}
+
+export interface StockPriceSearchDto {
+    page: number;
+    limit: number;
+    code: string;
+}

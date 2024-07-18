@@ -42,6 +42,7 @@
     </div>
 
     <div class="section-md">
+        <div class="section-title">재무재표</div>
         <div style="overflow: auto;">
             <table>
                 <thead>
@@ -73,17 +74,20 @@
                             <span *ngIf="finance?.year == 202412">(E)</span>
                         </td>
                         <td class="otherTd">{{finance?.fullRevenue |number}}{{finance?.fullRevenue?'억원':''}}</td>
-                        <td class="otherTd">{{finance?.operatingProfit|number}}{{finance?.operatingProfit?'억원':''}}</td>
+                        <td class="otherTd">{{finance?.operatingProfit|number}}{{finance?.operatingProfit?'억원':''}}
+                        </td>
                         <td class="otherTd">{{finance?.netIncome| number}}{{finance?.netIncome?'억원':''}}</td>
                         <td class="otherTd">
                             {{finance?.operatingProfitMargin|number}}{{finance?.operatingProfitMargin?'%':''}}</td>
-                        <td class="otherTd">{{finance?.netProfitMargin|number}}{{finance?.netProfitMargin?'%':''}}</td>
+                        <td class="otherTd">{{finance?.netProfitMargin|number}}{{finance?.netProfitMargin?'%':''}}
+                        </td>
                         <td class="otherTd">{{finance?.roe| number}}{{finance?.roe?'%':''}}</td>
                         <td class="otherTd">{{finance?.eps| number}}{{finance?.eps?'원':''}}</td>
                         <td class="otherTd">{{finance?.per| number}}{{finance?.per?'배':''}}</td>
                         <td class="otherTd">{{finance?.bps| number}}{{finance?.bps?'원':''}}</td>
                         <td class="otherTd">{{finance?.pbr| number}}{{finance?.pbr?'배':''}}</td>
-                        <td class="otherTd">{{finance?.debtToEquityRatio| number}}{{finance?.debtToEquityRatio?'%':''}}
+                        <td class="otherTd">{{finance?.debtToEquityRatio|
+                            number}}{{finance?.debtToEquityRatio?'%':''}}
                         </td>
                         <td class="otherTd">{{finance?.quickRatio| number}}{{finance?.quickRatio?'%':''}}</td>
                         <td class="otherTd">{{finance?.reserveRatio| number}}{{finance?.reserveRatio?'%':''}}</td>
@@ -97,9 +101,42 @@
                             {{finance?.operatingProfitIncreaseRatio|number}}{{finance?.operatingProfitIncreaseRatio?'%':''}}
                         </td>
                         <td class="otherTd">
-                            {{finance?.netProfitIncreaseRatio|number}}{{finance?.netProfitIncreaseRatio?'%':''}}</td>
+                            {{finance?.netProfitIncreaseRatio|number}}{{finance?.netProfitIncreaseRatio?'%':''}}
+                        </td>
                         <td class="otherTd">{{finance?.dividendPerShare|number}}{{finance?.dividendPerShare?'원':''}}
                         </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="section-md">
+        <div class="section-title">일별주가</div>
+        <div style="overflow: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="text-align: left;">날짜</th>
+                        <th>종가</th>
+                        <th>전일대비</th>
+                        <th>등락률</th>
+                        <th>시가</th>
+                        <th>고가</th>
+                        <th>저가</th>
+                        <th>거래량</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let price of stockPrices">
+                        <td class="otherTd">{{price.date|date:'MM.dd'}}</td>
+                        <td class="otherTd">{{price.close|number}}</td>
+                        <td class="otherTd">1,400</td>
+                        <td class="otherTd">1.5%</td>
+                        <td class="otherTd">{{price.open|number}}</td>
+                        <td class="otherTd">{{price.high|number}}</td>
+                        <td class="otherTd">{{price.low|number}}</td>
+                        <td class="otherTd">{{price.volume|number}}</td>
                     </tr>
                 </tbody>
             </table>

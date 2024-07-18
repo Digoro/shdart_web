@@ -26,6 +26,7 @@ export class HomePage implements OnInit {
   term: string;
   isMore = false;
   question = '';
+  aiDesc = `엔비디아 주가가 요즘 하늘 높은 줄 모르고 쭉쭉 올라가고 있죠? 🚀 엔비디아는 원래 게임 그래픽 카드 만드는 회사로 유명했는데, 요즘은 그래픽 카드 기술을 활용해서 인공지능 분야에서도 엄청난 활약을 하고 있대요. 특히 요즘 핫한 챗GPT 같은 인공지능 서비스에는`;
 
   constructor(
     private router: Router,

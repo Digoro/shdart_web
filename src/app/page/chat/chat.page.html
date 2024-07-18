@@ -21,6 +21,13 @@
                 <div style="font-size: 16px;font-weight: 600;">Stock AI</div>
             </div>
             <markdown [data]="welcomeText"></markdown>
+            <div style="display:flex;justify-content: flex-end;min-width: 32px;margin-bottom: 4px;
+            flex-direction: column;gap: 4px;cursor: pointer;">
+                <div *ngFor="let question of welComeQuestions" (click)="sendMessage(question)"
+                    style="padding:16px;border-radius: 24px;background: #007bff;color:white">
+                    {{question}}
+                </div>
+            </div>
         </div>
         <ng-container *ngFor="let message of chatViewList">
             <div *ngIf="message.role == 'user'"

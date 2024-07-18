@@ -3,7 +3,7 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DeviceDetectorService } from 'ngx-device-detector';
-import { Corp } from 'src/app/model/corp';
+import { Corp, StockPrice } from 'src/app/model/corp';
 import { CorpService } from 'src/app/service/corp.service';
 
 @Component({
@@ -13,6 +13,7 @@ import { CorpService } from 'src/app/service/corp.service';
 })
 export class CorpPage implements OnInit {
   corp: Corp;
+  stockPrices: StockPrice[];
   summary = '';
   isMore = false;
 
@@ -33,6 +34,9 @@ export class CorpPage implements OnInit {
           this.summary += resp;
         });
         this.corpService.emitSummaryCorp(this.corp.name);
+      });
+      this.corpService.searchStockPrice({ page: 1, limit: 100, code: `${params.code}` }).subscribe(resp => {
+        this.stockPrices = resp.items;
       })
     })
   }

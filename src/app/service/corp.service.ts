@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Socket } from 'ngx-socket-io';
 import { Observable, map } from 'rxjs';
 import { Message } from '../model/chat';
-import { Corp, CorpSearchDto } from '../model/corp';
+import { Corp, CorpSearchDto, StockPrice, StockPriceSearchDto } from '../model/corp';
 import { Pagination } from '../model/pagination';
 import { UtilService } from './util.service';
 
@@ -60,11 +60,19 @@ export class CorpService {
     return this.socket.emit('getSummaryCorp', { corpName })
   }
 
+  getWelcomeQuestions(): Observable<{ answer: string }> {
+    return this.http.get<{ answer: string }>(`api/chat/welcome`)
+  }
+
   getAnswerMessage(messageList: Message[]): Observable<{ answer: string }> {
     return this.http.post<{ answer: string }>(`api/chat`, { messageList })
   }
 
   getRelationQuestions(messageList: Message[]): Observable<{ answer: string }> {
     return this.http.post<{ answer: string }>(`api/chat/relation_questions`, { messageList })
+  }
+
+  searchStockPrice(dto: StockPriceSearchDto): Observable<Pagination<StockPrice>> {
+    return this.http.post<Pagination<StockPrice>>(`api/search/stock_price`, dto);
   }
 }
