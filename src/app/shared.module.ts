@@ -4,6 +4,7 @@ import { LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { RouterModule } from '@angular/router';
+import { HighchartsChartModule } from 'highcharts-angular';
 import { MarkdownModule } from 'ngx-markdown';
 import { HeaderComponent } from './component/header/header.component';
 import { SkeletonComponent } from './component/skeleton/skeleton.component';
@@ -20,7 +21,8 @@ registerLocaleData(localeKo);
     ReactiveFormsModule,
     CommonModule,
     MatBottomSheetModule,
-    MarkdownModule.forRoot()
+    MarkdownModule.forRoot(),
+    HighchartsChartModule
   ],
   exports: [
     RouterModule,
@@ -30,7 +32,8 @@ registerLocaleData(localeKo);
     HeaderComponent,
     MatBottomSheetModule,
     SkeletonComponent,
-    MarkdownModule
+    MarkdownModule,
+    HighchartsChartModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'ko' }
