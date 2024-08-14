@@ -14,6 +14,11 @@
 </ng-template>
 
 <div class="frame">
+    <div class="section-md">
+        <highcharts-chart *ngIf="chartOptions?.series" [constructorType]="'stockChart'" [Highcharts]="Highcharts"
+            [options]="chartOptions" style="width: 100%; height: 400px; display: block;"></highcharts-chart>
+    </div>
+
     <div class="section-md" style="padding-top: 8px;">
         <ng-container *ngIf="corp">
             <div style="margin-bottom:24px;display: flex;justify-content: space-between;align-items: center;">
@@ -22,11 +27,11 @@
                         onerror="this.onerror=null; this.src='/assets/black-ball.png';">
                     <div style="font-size: 22px;font-weight: 600;">{{corp.name}}</div>
                 </div>
-                <div style="cursor: pointer;display:flex;align-items: center;gap:4px;" *ngIf="corp"
+                <!-- <div style="cursor: pointer;display:flex;align-items: center;gap:4px;" *ngIf="corp"
                     (click)="goToOrder(corp.code)">
                     <img src="/assets/sh-logo.png" style="width: 72px;">
                     <div style="font-size:12px">주문하기</div>
-                </div>
+                </div> -->
             </div>
             <div style="background: rgb(185, 218, 247);padding: 24px;border-radius: 24px;margin-top: 16px;">
                 <div style="font-size: 14px;font-weight: 600;margin-bottom:4px">Stock AI 분석</div>
